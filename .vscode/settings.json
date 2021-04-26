@@ -1,4 +1,9 @@
 {
+
+    "cSpell.words": [
+        "zindex"
+    ],
+    "githubIssues.createInsertFormat": "url",
     "githubIssues.queries": [
 
         {
