@@ -67,17 +67,7 @@ $scale_grid_ratios: map-get($_scale, scale_grid_ratios);
     }
   }
 }
-// css dimensions rules builder responsive
-@mixin css_dimension_property_responsive_builder(
-  $mq_size_key,
-  $mq_size_value,
-  $scale_prop
-) {
-  // shorthand naked
-  @media only screen and (min-width: $mq_size_value + em) {
-    @content;
-  }
-}
+ 
 
 // loop on shorthands
 @mixin play_shorthand_loop($scale_prop, $mq_size_key) {
@@ -137,10 +127,8 @@ $scale_grid_ratios: map-get($_scale, scale_grid_ratios);
   @include play_shorthand_loop($scale_prop, null);
   // loop on responsive shorthands
   @each $mq_size_key, $mq_size_value in $_media_quey_sizes {
-    @include css_dimension_property_responsive_builder(
-      $mq_size_key,
-      $mq_size_value,
-      $scale_prop
+    @include utils.responsive_encloser( 
+      $mq_size_value 
     ) {
       @include play_shorthand_loop($scale_prop, $mq_size_key);
     }
@@ -150,10 +138,8 @@ $scale_grid_ratios: map-get($_scale, scale_grid_ratios);
   @include play_dimensions_loop($scale_prop, null);
   // loop on responsive dimensions
   @each $mq_size_key, $mq_size_value in $_media_quey_sizes {
-    @include css_dimension_property_responsive_builder(
-      $mq_size_key,
-      $mq_size_value,
-      $scale_prop
+    @include utils.responsive_encloser( 
+      $mq_size_value 
     ) {
       @include play_dimensions_loop($scale_prop, $mq_size_key);
     }
@@ -163,10 +149,8 @@ $scale_grid_ratios: map-get($_scale, scale_grid_ratios);
   @include play_defined_dimensions_loop($scale_prop, null);
   // loop on responsive defined dimensions
   @each $mq_size_key, $mq_size_value in $_media_quey_sizes {
-    @include css_dimension_property_responsive_builder(
-      $mq_size_key,
-      $mq_size_value,
-      $scale_prop
+    @include utils.responsive_encloser( 
+      $mq_size_value 
     ) {
       @include play_defined_dimensions_loop($scale_prop, $mq_size_key);
     }
@@ -176,10 +160,8 @@ $scale_grid_ratios: map-get($_scale, scale_grid_ratios);
   @include play_ratio_dimensions_loop($scale_prop, null);
   // loop on responsive ratio dimensions
   @each $mq_size_key, $mq_size_value in $_media_quey_sizes {
-    @include css_dimension_property_responsive_builder(
-      $mq_size_key,
-      $mq_size_value,
-      $scale_prop
+    @include utils.responsive_encloser( 
+      $mq_size_value 
     ) {
       @include play_ratio_dimensions_loop($scale_prop, $mq_size_key);
     }
