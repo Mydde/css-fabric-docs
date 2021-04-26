@@ -9,7 +9,7 @@
     "watch-all": "npm-run-all -p -r watch-sass watch-json",
     "watch-sass": "gulp watchSass",
     "watch-json": "gulp watchJson",
-    "task-download": "gulp taskDownload" 
+    "task-download": "gulp taskDownload"
   },
   "dependencies": {
     "JSON": "^1.0.0",
