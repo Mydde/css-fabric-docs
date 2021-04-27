@@ -28,7 +28,6 @@ const  Text =  (props: Props)=> {
 		<div>
 			{/* <pre>{JSON.stringify(conf_text, null, '\t')}</pre> */} 
 			<SubHeaderH tag="" description="">
-			</SubHeaderH>
 				<SubHeader
 					tag={'text alignments'}
 					description={tagProperties.docs['text_align']}>
@@ -44,6 +43,7 @@ const  Text =  (props: Props)=> {
 					description={tagProperties.docs['font_weights']}>
 					<CssFabricProperties property={font_weights} />
 				</SubHeader>
+			</SubHeaderH>
 			<SubHeader tag={'text title H'} description={'voilou voilou'}>
 				<SubSubHeader tag={'H text'} description={'voilou voilou'}>
 					<div className="grid-h grid-wrap pad-all items-start">

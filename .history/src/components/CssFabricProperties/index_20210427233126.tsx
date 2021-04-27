@@ -16,7 +16,7 @@ export const CssFabricProperties = (props: Props) => {
 								<span className={'pad-l w-8'}>
                                 {font_weight}
 								</span>
-                                <span className={'pad-all'}>:</span>
+                                <span className={'pad-4'}>:</span>
 								<span className={cssProperty}>
 								this text is {font_weight}
 								</span>

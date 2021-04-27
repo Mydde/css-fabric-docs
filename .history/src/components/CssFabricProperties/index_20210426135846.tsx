@@ -13,7 +13,7 @@ export const CssFabricProperties = (props: Props) => {
 						const cssProperty = 'txt-' + key;
 
 						return (<div key={key} className={'grid-h items-center'}>
-								<span className={'pad-l w-8'}>
+								<span className={'pad-l w-quarter'}>
                                 {font_weight}
 								</span>
                                 <span className={'pad-all'}>:</span>

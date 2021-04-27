@@ -37,7 +37,7 @@ export const Header = (props: HeaderProps) => {
 		<div className={'pad-all'}>
 			<div className={'grid-h items-center pad-l-16 brd-b'}>
 				<span className={'txt-h2 pad-all '}>{props.title}</span>
-				<span className={'txt-h4 pad-all txt-gray-500'}>
+				<span className={'txt-h4 pad-all '}>
 					{props.tag}
 				</span>
 			</div>

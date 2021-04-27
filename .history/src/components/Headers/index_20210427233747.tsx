@@ -37,7 +37,7 @@ export const Header = (props: HeaderProps) => {
 		<div className={'pad-all'}>
 			<div className={'grid-h items-center pad-l-16 brd-b'}>
 				<span className={'txt-h2 pad-all '}>{props.title}</span>
-				<span className={'txt-h4 pad-all txt-gray-500'}>
+				<span className={'txt-h4 pad-all '}>
 					{props.tag}
 				</span>
 			</div>
@@ -55,7 +55,7 @@ export const SubHeader = (props: Props) => {
 				<div className={'w-4 brd-r txt-center'} style={{textAlign:'center'}}>[sub]</div>
 				<div className={'pad-l-4'}>
 					<span className={'txt-h3 pad-all '}>{props.tag}</span>
-					<div className={'pad-all  txt-gray-700'}>{props.description}</div>
+					<div className={'pad-all  txt-gray-500'}>{600.description}</div>
 				</div>
 			</div>
 			<div className={'pad-l-7'}>

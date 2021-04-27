@@ -1,11 +1,10 @@
-// npm link cssfabric
+import '../../styles/globals.css'
+//import '../../styles/css-fabric/core/css-fabric.css' 
 import 'cssfabric/lib/styles/css-fabric/core/css-fabric.css' 
-
-import cssfabric from "cssfabric";
+import Grid from 'cssfabric' 
 
 function MyApp({ Component, pageProps }) { 
-  
-
+ 
   return <Component {...pageProps} />
 }
 
