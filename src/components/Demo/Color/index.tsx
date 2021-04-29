@@ -7,14 +7,15 @@ import {
   SubHeaderH,
 } from "src/components/Headers";
 
-import conf_fabric from "cssfabric";  
+import conf_fabric from "cssfabric";
 
 interface Props {}
 
 const Color = (props: Props) => {
-  const fabricConfig = conf_fabric.getModuleConfig("base");
+  const fabricConfig = conf_fabric.getModuleData("base");
+  const fabricColorConfig = conf_fabric.getModuleData("color");
   /// lib/css-fabric/_generated/css.fabric.config.json
-  const base = fabricConfig._data;
+  const base = fabricColorConfig;
 
   console.log(base);
   // const a = conf_fabric["css-config"].modules.base._data.grid_class_name;
@@ -31,7 +32,7 @@ const Color = (props: Props) => {
                   <div
                     className={"brd-all pad-all-2 txt-center bg-" + key}></div>
                   <div
-                    className={"grid-main pad-all-4 txt-bold color-" + { key }}> 
+                    className={"grid-main pad-all-4 txt-bold color-" + { key }}>
                     {key}
                   </div>
                 </div>
@@ -76,6 +77,23 @@ const Color = (props: Props) => {
           title="background-themed-colors"
           description="naafa"></SubHeader>
         <SubHeader title="gradients" description="gradients"></SubHeader>
+        <SubHeader title="palette colors" description="naafa">
+          <div className={"grid-h grid-wrap w-full"}>
+          {Object.keys(base.color_palette_props).map((key, index) => {
+            let prop = base.color_palette_props[key];
+            return (
+              <div className={"grid-h pad-b grid-main border-all  "}>
+                <div className="grid-main pad-all-4"> {key}</div>
+                <div
+                  className={"grid-main pad-all-2 txt-center  h-6 w-6 bg-theme-" + key}>
+                  *-{key}
+                </div>
+              </div>
+            );
+          })}
+
+          </div>
+        </SubHeader>
       </div>
       <div className={"w-quarter"}>
         <SubHeader title="schemed colors" description="naafa">
@@ -86,22 +104,8 @@ const Color = (props: Props) => {
                 <div className="grid-main pad-all-4"> {key}</div>
                 <div
                   className={
-                    "grid-main brd-all pad-all-2 txt-center bg-theme-" + key
+                    "grid-main brd-all pad-all-2 txt-center h-4 w-4 bg-theme-" + key
                   }></div>
-              </div>
-            );
-          })}
-        </SubHeader>
-        <SubHeader title="palette colors" description="naafa">
-          {Object.keys(base.color_palette_props).map((key, index) => {
-            let prop = base.color_palette_props[key];
-            return (
-              <div className={"grid-h pad-b"}>
-                <div className="grid-main pad-all-4"> {key}</div>
-                <div
-                  className={"grid-main pad-all-2 txt-center bg-theme-" + key}>
-                  *-{key}
-                </div>
               </div>
             );
           })}

@@ -64,7 +64,7 @@ const Modulo = ({ props }) => {
                     <a>
                       <span className={"hover-show"}>set </span>
                       <span className={"hover-hide"}>{`${key}`}</span>
-                      <span className={"hover-show txt-bold"}>{`${key}`} </span>
+                      <span className={"hover-show txt-bold"}>{`${key}`}</span>
                       <span className={"hover-show"}> with cssfabric</span>
                     </a>
                   </Link>
