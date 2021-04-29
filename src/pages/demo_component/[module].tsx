@@ -58,7 +58,7 @@ const Modulo = ({ props }) => {
           description={"desc"}
         />
       </div>
-      <aside className={"w-16 grid-v content-start"}>
+      <aside className={"w-16 w-sm-8 grid-v content-start"}>
         <nav className={"pad-all-16"}>
           <ul className={"menu-v"}>
             {Object.keys(links).map((key, index) => {

@@ -26,11 +26,50 @@ const Text = (props: Props) => {
   let conf_text_data = tagProperties.data;
   let conf_text_docs = tagProperties.docs;
 
-  const { font_weights, text_transform, text_align,font_predefined_colors } = conf_text_data;
+  const {
+    font_weights,
+    text_transform,
+    text_align,
+    font_predefined_colors,
+  } = conf_text_data;
 
   return (
     <div>
-      {/* <pre>{JSON.stringify(conf_text, null, '\t')}</pre> */}
+      <SubHeader
+        title={"text title H"}
+        title_tag={".-h"}
+        description={"Title sizes declaration"}>
+        <div className="grid-h grid-wrap pad-all items-stretch">
+          {[...Array(5)].map((name, val) => (
+            <div className={`grid-main grid-v`}>
+              <div>{`h${val + 1}, .h${val + 1}`}</div>
+              <div className={`h${val + 1} grid-main grid-h items-center`}>
+                <div className={"self-end"}>title</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <h4 className={"pad-all brd-b dsp-inline"}>H text borders sticked to bottom</h4>
+        <div className="grid-h grid-wrap pad-all items-end">
+          {[...Array(5)].map((name, val) => (
+            <div className={`grid-main brd-b pad-all-16`}>
+              <span className={`h${val + 1}`}>{`.h${val + 1}`}</span>
+            </div>
+          ))}
+        </div>
+        <h4 className={"pad-all brd-b dsp-inline"}>
+          H text vertically aligned with sized borders
+        </h4>
+        <div className="grid-h grid-wrap pad-all-16 items-end">
+          {[...Array(5)].map((name, val) => (
+            <div className={`grid-main  pad-all`}>
+              <span className={`brd-b h${val + 1}`}>{`.h${
+                val + 1
+              }`}</span>
+            </div>
+          ))}
+        </div>
+      </SubHeader>
       <SubHeader
         title={"text_align"}
         tag={"text alignments"}
@@ -49,47 +88,7 @@ const Text = (props: Props) => {
         description={tagProperties.docs["font_weights"]}>
         <CssFabricProperties property={font_weights} />
       </SubHeader>
-      <SubHeader
-        title={"text title H"}
-        title_tag={".-h"}
-        description={"Title sizes declaration"}>
-        <SubSubHeader tag={"H text"} description={"voilou voilou"}>
-          <div className="grid-h grid-wrap pad-all items-start">
-            {[...Array(5)].map((name, val) => (
-              <div className={`grid-main grid-v`}>
-                <div>.{`txt-h${val + 1}`}</div>
-                <div className={`txt-h${val + 1} grid-main grid-v`}>
-                  <div>title</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SubSubHeader>
-        <SubSubHeader
-          tag={"H text borders sticked to bottom"}
-          description={"voilou voilou"}>
-          <div className="grid-h grid-wrap pad-all items-end">
-            {[...Array(5)].map((name, val) => (
-              <div className={`grid-main brd-b pad-all`}>
-                <span className={`txt-h${val + 1}`}>{`txt-h${val + 1}`}</span>
-              </div>
-            ))}
-          </div>
-        </SubSubHeader>
-        <SubSubHeader
-          tag={"H text vertically aligned with sized borders"}
-          description={"voilou voilou"}>
-          <div className="grid-h grid-wrap pad-all items-end">
-            {[...Array(5)].map((name, val) => (
-              <div className={`grid-main  pad-all`}>
-                <span className={`brd-b txt-h${val + 1}`}>{`txt-h${
-                  val + 1
-                }`}</span>
-              </div>
-            ))}
-          </div>
-        </SubSubHeader>
-      </SubHeader>
+      
     </div>
   );
 };
