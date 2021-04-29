@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-
-import { fabricModuleProperties } from "@/utils/fabricModuleProperties";
+ 
+import conf_fabric from "cssfabric";
 
 import {
   Header,
@@ -23,9 +23,7 @@ const links = {
   overflow: "grid-98",
   zindex: "grid-98",
   menu: "grid-98",
-};
-
-// const DynamicComponent = dynamic((node) => import('../../components/Demo/'))
+}; 
 
 const Modulo = ({ props }) => {
   const router = useRouter();
@@ -35,9 +33,7 @@ const Modulo = ({ props }) => {
   let moduleTag;
   let DynamicComponent;
   // @ts-ignore
-  const tagProperties = fabricModuleProperties.getModuleConf({
-    module: module,
-  });
+  const tagProperties = conf_fabric.getModuleMetaData(module);
 
   if (module != undefined) {
     // @ts-ignore
@@ -66,7 +62,7 @@ const Modulo = ({ props }) => {
                 <li className={"pad-ii-4 pad-tb-8 menu-item hover-parent"}>
                   <Link key={key} href={`/demo_component/${key}`}>
                     <a>
-                      -<span className={"hover-show"}>set </span>
+                      <span className={"hover-show"}>set </span>
                       <span className={"hover-hide"}>{`${key}`}</span>
                       <span className={"hover-show txt-bold"}>{`${key}`} </span>
                       <span className={"hover-show"}> with cssfabric</span>

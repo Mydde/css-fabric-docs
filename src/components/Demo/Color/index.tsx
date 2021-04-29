@@ -7,14 +7,12 @@ import {
   SubHeaderH,
 } from "src/components/Headers";
 
-import conf_fabric from "cssfabric"; // "css-fabric/_generated/css.fabric.config.json";
-import { fabricModuleProperties } from "@/utils/fabricModuleProperties";
-import { CssFabricProperties } from "src/components/CssFabricProperties";
+import conf_fabric from "cssfabric";  
 
 interface Props {}
 
 const Color = (props: Props) => {
-  const fabricConfig = conf_fabric.getJsonConfig("base");
+  const fabricConfig = conf_fabric.getModuleConfig("base");
   /// lib/css-fabric/_generated/css.fabric.config.json
   const base = fabricConfig._data;
 
@@ -22,7 +20,7 @@ const Color = (props: Props) => {
   // const a = conf_fabric["css-config"].modules.base._data.grid_class_name;
   const a = "";
   return (
-    <div className={"grid-h"}>
+    <div className={"grid-h grid-wrap"}>
       <div className={"grid-main"}>
         <SubHeader title="text colors" description="naafa">
           <div className={"grid-h"}>

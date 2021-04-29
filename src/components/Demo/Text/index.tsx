@@ -6,32 +6,36 @@ import {
   SubSubHeader,
   SubHeaderH,
 } from "src/components/Headers";
-
-import conf_fabric from "css-fabric/_generated/css.fabric.config.json";
-import { fabricModuleProperties } from "@/utils/fabricModuleProperties";
+  
 import { CssFabricProperties } from "src/components/CssFabricProperties";
+  
+import conf_fabric from "cssfabric";
 
 interface Props {}
 
 const Text = (props: Props) => {
   const router = useRouter();
-  const { pid } = router.query;
+  const { pid } = router.query; 
 
   const fabricModule = "text";
-  const tagProperties = fabricModuleProperties.getModuleConf({
-    module: fabricModule,
-  });
 
-  let conf_text_meta = tagProperties.meta;
-  let conf_text_data = tagProperties.data;
-  let conf_text_docs = tagProperties.docs;
+  const tagProperties = conf_fabric.getModuleData(fabricModule);
+
+  console.log(tagProperties);
+ 
+  let conf_text_data = conf_fabric.getModuleData(fabricModule); 
+  let conf_text_docs = conf_fabric.getModuleDocs(fabricModule); 
 
   const {
     font_weights,
     text_transform,
     text_align,
     font_predefined_colors,
+    font_sizes
   } = conf_text_data;
+
+  const nb = font_sizes;
+
 
   return (
     <div>
@@ -40,7 +44,7 @@ const Text = (props: Props) => {
         title_tag={".-h"}
         description={"Title sizes declaration"}>
         <div className="grid-h grid-wrap pad-all items-stretch">
-          {[...Array(5)].map((name, val) => (
+          {[...Array(nb)].map((name, val) => (
             <div className={`grid-main grid-v`}>
               <div>{`h${val + 1}, .h${val + 1}`}</div>
               <div className={`h${val + 1} grid-main grid-h items-center`}>
@@ -51,7 +55,7 @@ const Text = (props: Props) => {
         </div>
         <h4 className={"pad-all brd-b dsp-inline"}>H text borders sticked to bottom</h4>
         <div className="grid-h grid-wrap pad-all items-end">
-          {[...Array(5)].map((name, val) => (
+          {[...Array(nb)].map((name, val) => (
             <div className={`grid-main brd-b pad-all-16`}>
               <span className={`h${val + 1}`}>{`.h${val + 1}`}</span>
             </div>
@@ -61,7 +65,7 @@ const Text = (props: Props) => {
           H text vertically aligned with sized borders
         </h4>
         <div className="grid-h grid-wrap pad-all-16 items-end">
-          {[...Array(5)].map((name, val) => (
+          {[...Array(nb)].map((name, val) => (
             <div className={`grid-main  pad-all`}>
               <span className={`brd-b h${val + 1}`}>{`.h${
                 val + 1
@@ -73,19 +77,19 @@ const Text = (props: Props) => {
       <SubHeader
         title={"text_align"}
         tag={"text alignments"}
-        description={tagProperties.docs["text_align"]}>
+        description={conf_text_docs["text_align"]}>
         <CssFabricProperties property={text_align} />
       </SubHeader>
       <SubHeader
         title={"text_transform"}
         tag={"text transforms"}
-        description={tagProperties.docs["text_transform"]}>
+        description={conf_text_docs["text_transform"]}>
         <CssFabricProperties property={text_transform} />
       </SubHeader>
       <SubHeader
         title={"font_weights"}
         title_tag={"text weights"}
-        description={tagProperties.docs["font_weights"]}>
+        description={conf_text_docs["font_weights"]}>
         <CssFabricProperties property={font_weights} />
       </SubHeader>
       
