@@ -210,20 +210,8 @@ function watchInclude(cb) {
   gulp.watch(fabricModuleDir, task_mergeInclude);
 
   cb();
-}
-
-/* download(url)
-	.pipe(gulp.dest("downloads/")); */
-
-function taskDownload(cb) {
-  gulpDownload(
-    "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-  ).pipe(gulp.dest(  "resources/css/"  ));
-
-  cb();
-}
+} 
 
 exports.watchJson = watchJsonTask;
 exports.watchSass = watchSassTask;
-exports.watchInclude = watchInclude;
-exports.taskDownload = taskDownload;
+exports.watchInclude = watchInclude; 

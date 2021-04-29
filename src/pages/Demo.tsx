@@ -22,7 +22,7 @@ export default function Home({ isConnected }) {
 	return (
 		<div className={'grid-h grid-wrap h-full'}>
 			<div className={'w-full w-sm-main h-8'}>
-				<HeaderSiteTitle tag={'css-fabric'} description={'desc'} />
+				<HeaderSiteTitle tag={'cssfabric'} description={'desc'} />
 			</div>
 			<div className={'w-16 grid-v'}>
 				{Object.keys(links).map((key, index) => {
