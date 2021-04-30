@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import dynamic from "next/dynamic";
  
-import conf_fabric from "cssfabric";
+import conf_cssfabric from "cssfabric";
 
 import {
   Header,
@@ -33,7 +33,7 @@ const Modulo = ({ props }) => {
   let moduleTag;
   let DynamicComponent;
   // @ts-ignore
-  const tagProperties = conf_fabric.getModuleMetaData(module);
+  const tagProperties = conf_cssfabric.getModuleMetaData(module);
 
   if (module != undefined) {
     // @ts-ignore
@@ -54,9 +54,9 @@ const Modulo = ({ props }) => {
           description={"desc"}
         />
       </div>
-      <aside className={"w-16 w-sm-8 grid-v content-start"}>
-        <nav className={"pad-all-16"}>
-          <ul className={"menu-v"}>
+      <aside className={"w-lg-full w-xl-8 w-xxl-16"}>
+        <nav className={"pad-all-16 border-lg-b"}> 
+          <ul className={"menu-v menu-lg-h"}>
             {Object.keys(links).map((key, index) => {
               return (
                 <li className={"pad-ii-4 pad-tb-8 menu-item hover-parent"}>
@@ -88,5 +88,4 @@ const Modulo = ({ props }) => {
   );
 };
 
-export default Modulo;
-// module.exports = Modulo
+export default Modulo; 
