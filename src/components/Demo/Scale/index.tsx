@@ -31,6 +31,15 @@ const Scale = (props: Props) => {
           );
         })}
       </div>
+      <div className={"grid-h grid-wrap"}>
+        {[...scale_defined_steps].map((value, key) => {
+          return (
+            <div className={"pad-all w-4 bg-100  h-" + value} key={value}>
+              <div className={"border-all-1 h-2"}>w-{value}</div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
