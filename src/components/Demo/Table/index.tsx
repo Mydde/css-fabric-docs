@@ -19,29 +19,28 @@ const Table = (props: Props) => {
   return (
     <div className={"grid-h grid-wrap relative"}>
       {tblNames.map((nameClass) => (
-        <div
-          className={
-            "h-16  w-tiers pad-all-16"
-          }>
-          <div className={"h-full grid-v overflow-j relative border-all-1"}>
-              <h4 className={"brd-b-1 pad-all-16"}>- table : {nameClass}</h4>
+        <div className={"h-32 w-md-full w-lg-mid w-mid  pad-all-16"}>
+          <div className={"h-full grid-v overflow-j relative"}>
+            <h4 className={"brd-b-1 pad-all-16"}>- table : {nameClass}</h4>
             <div className={"grid-main border-all-1 overflow-auto"}>
               <table className={"table tbl-layout  w-full " + nameClass}>
                 <thead>
                   <tr>
-                    <th>
-                      nada 
-                    </th>
-                    <th>nada</th>
-                    <th>nada</th>
+                    {[...Array(6)].map((name, val) => (
+                      <React.Fragment>
+                        <th>Title</th>
+                      </React.Fragment>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {[...Array(10)].map((name, val) => (
+                  {[...Array(30)].map((name, val) => (
                     <tr key={val}>
-                      <td>{val + 1}</td>
-                      <td>{val}</td>
-                      <td>{val}</td>
+                      {[...Array(6)].map((name, val) => (
+                        <React.Fragment>
+                          <td>{val + 1}</td>
+                        </React.Fragment>
+                      ))}
                     </tr>
                   ))}
                 </tbody>

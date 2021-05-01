@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import dynamic from "next/dynamic";
- 
+
 import conf_cssfabric from "cssfabric";
 
 import {
@@ -23,7 +23,7 @@ const links = {
   overflow: "grid-98",
   zindex: "grid-98",
   menu: "grid-98",
-}; 
+};
 
 const Modulo = ({ props }) => {
   const router = useRouter();
@@ -53,10 +53,18 @@ const Modulo = ({ props }) => {
           title_tag={"just.fabric.it"}
           description={"desc"}
         />
+
+        <div className={"grid-h content-justify border-all"}>
+          <div className={"dsp-none dsp-sm-block"}>sm</div>
+          <div className={"dsp-none dsp-md-block"}>md</div>
+          <div className={"dsp-none dsp-lg-block"}>lg</div>
+          <div className={"dsp-none dsp-xl-block"}>xl</div>
+          <div className={"dsp-none dsp-xxl-block"}>xxl</div>
+        </div>
       </div>
-      <aside className={"w-lg-full w-xl-8 w-xxl-16"}>
-        <nav className={"pad-all-16 border-lg-b"}> 
-          <ul className={"menu-v menu-lg-h"}>
+      <aside className={"w-md-full w-16"}>
+        <nav className={"pad-all-16 border-lg-b"}>
+          <ul className={"menu-v menu-md-h"}>
             {Object.keys(links).map((key, index) => {
               return (
                 <li className={"pad-ii-4 pad-tb-8 menu-item hover-parent"}>
@@ -88,4 +96,4 @@ const Modulo = ({ props }) => {
   );
 };
 
-export default Modulo; 
+export default Modulo;
