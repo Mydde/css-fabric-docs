@@ -1,6 +1,7 @@
 // npm link cssfabric
 import 'styles/globals.css';
-import 'cssfabric/lib/styles/css-fabric/core/css-fabric.css' 
+import 'cssfabric/lib/styles/cssfabric.min.css' 
+import 'cssfabric/lib/styles/cssfabric.responsive.min.css' 
 
 import cssfabric from "cssfabric";
 

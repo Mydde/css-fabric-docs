@@ -14,7 +14,7 @@ interface Props {}
 const Color = (props: Props) => {
   const fabricConfig = conf_fabric.getModuleData("base");
   const fabricColorConfig = conf_fabric.getModuleData("color");
-  /// lib/css-fabric/_generated/css.fabric.config.json
+ 
   const base = fabricColorConfig;
 
   console.log(base);

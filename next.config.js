@@ -7,12 +7,12 @@ module.exports = {
     webpack5: true,
   },
   // If you want to configure the Sass compiler
-  sassOptions: {
+  /* sassOptions: {
     includePaths: ["css-fabric", "node_modules", "src"].map((d) =>
       path.join(__dirname, d)
     ),
     prependData: '$env: ' + process.env.NODE_ENV + ';$CSS_FABRIC_PATH: ' + process.env.CSS_FABRIC_PATH + ';'
-  },
+  }, */
   webpack: (config, { dev, isServer }) => {
     if (!isServer) {
       config.resolve.fallback.fs = false;
