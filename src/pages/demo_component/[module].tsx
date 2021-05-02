@@ -62,9 +62,13 @@ const Modulo = ({ props }) => {
           <div className={"dsp-none dsp-xxl-block"}>xxl</div>
         </div>
       </div>
-      <aside className={"w-md-full w-16"}>
+      <aside className={"w-lg-full w-16"}>
         <nav className={"pad-all-16 border-lg-b"}>
-          <ul className={"menu-v menu-md-h"}>
+          <ul className={"menu-v menu-lg-h"}>
+            <li
+              className={
+                "pad-ii-4 pad-tb-8 menu-item hover-parent active"
+              }>vide</li>
             {Object.keys(links).map((key, index) => {
               return (
                 <li className={"pad-ii-4 pad-tb-8 menu-item hover-parent"}>
