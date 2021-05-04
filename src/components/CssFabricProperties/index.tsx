@@ -7,6 +7,7 @@ interface Props {
 
 export const CssFabricProperties = (props: Props) => {
   const { property } = props;
+ 
 
   return (
     <div className={"grid-h grid-wrap"}>
@@ -18,7 +19,7 @@ export const CssFabricProperties = (props: Props) => {
             key={key}
             className={"grid-h grid-wrap items-center w-tiers pad-all-4"}>
             <div className={"pad-ii"}>
-              <div className={"pad-ii-8 brd-all"}>txt-{key}</div>
+              <div className={"pad-ii-8 border-all"}>txt-{key}</div>
             </div>
             <div className={cssProperty + " grid-main grid-h"}>
               <div className={"pad-ii-4"}>"</div>

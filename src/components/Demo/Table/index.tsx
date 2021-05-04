@@ -21,7 +21,7 @@ const Table = (props: Props) => {
       {tblNames.map((nameClass) => (
         <div className={"h-32 w-md-full w-lg-mid w-mid  pad-all-16"}>
           <div className={"h-full grid-v overflow-j relative"}>
-            <h4 className={"brd-b-1 pad-all-16"}>- table : {nameClass}</h4>
+            <h4 className={"border-b-1 pad-all-16"}>- table : {nameClass}</h4>
             <div className={"grid-main border-all-1 overflow-auto"}>
               <table className={"table tbl-layout  w-full " + nameClass}>
                 <thead>

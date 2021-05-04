@@ -14,10 +14,11 @@ interface Props {}
 const Color = (props: Props) => {
   const fabricConfig = conf_fabric.getModuleData("base");
   const fabricColorConfig = conf_fabric.getModuleData("color");
- 
-  const base = fabricColorConfig;
 
-  console.log(base);
+  const base = fabricColorConfig;
+  const baseColor = fabricColorConfig;
+
+  console.log({ base });
   // const a = conf_fabric["css-config"].modules.base._data.grid_class_name;
   const a = "";
   return (
@@ -30,7 +31,9 @@ const Color = (props: Props) => {
               return (
                 <div className={"grid-h pad-b w-8"}>
                   <div
-                    className={"brd-all pad-all-2 txt-center bg-" + key}></div>
+                    className={
+                      "border-all pad-all-2 txt-center bg-" + key
+                    }></div>
                   <div
                     className={"grid-main pad-all-4 txt-bold color-" + { key }}>
                     {key}
@@ -65,46 +68,54 @@ const Color = (props: Props) => {
                     className={
                       "h-4 pad-all-2 txt-center bg-theme-" + val * 100
                     }>
-                    {val}
+                    bg-theme-{val}00
                   </div>
                 </div>
               );
             })}
           </div>
         </SubHeader>
-        <SubHeader title="background-colors" description="naafa"></SubHeader>
+        <SubHeader title="background-colors" description="naafa">
+
+        </SubHeader>
         <SubHeader
           title="background-themed-colors"
-          description="naafa"></SubHeader>
-        <SubHeader title="gradients" description="gradients"></SubHeader>
+          description="naafa">
+ 
+          </SubHeader>
+        <SubHeader title="gradients" description="gradients">
+
+        </SubHeader>
         <SubHeader title="palette colors" description="naafa">
           <div className={"grid-h grid-wrap w-full"}>
-          {Object.keys(base.color_palette_props).map((key, index) => {
-            let prop = base.color_palette_props[key];
-            return (
-              <div className={"grid-h pad-b grid-main border-all  "}>
-                <div className="grid-main pad-all-4"> {key}</div>
-                <div
-                  className={"grid-main pad-all-2 txt-center  h-6 w-6 bg-theme-" + key}>
-                  *-{key}
+            {Object.keys(baseColor.color_palette_props).map((key, index) => {
+              let prop = baseColor.color_palette_props[key];
+              return (
+                <div className={"grid-h pad-b grid-main border-all  "}>
+                  <div className="grid-main pad-all-4"> {key}</div>
+                  <div
+                    className={
+                      "grid-main pad-all-2 txt-center  h-6 w-6 bg-theme-" + key
+                    }>
+                    *-{key}
+                  </div> 
                 </div>
-              </div>
-            );
-          })}
-
+              );
+            })}
           </div>
         </SubHeader>
       </div>
       <div className={"w-quarter"}>
         <SubHeader title="schemed colors" description="naafa">
-          {Object.keys(base.color_schemes_props).map((key, index) => {
-            let prop = base.color_schemes_props[key];
+          {Object.keys(baseColor.color_schemes_props).map((key, index) => {
+            let prop = baseColor.color_schemes_props[key];
             return (
               <div className={"grid-h pad-b"}>
                 <div className="grid-main pad-all-4"> {key}</div>
                 <div
                   className={
-                    "grid-main brd-all pad-all-2 txt-center h-4 w-4 bg-theme-" + key
+                    "grid-main border-all pad-all-2 txt-center h-4 w-4 bg-theme-" +
+                    key
                   }></div>
               </div>
             );

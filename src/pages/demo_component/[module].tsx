@@ -54,7 +54,7 @@ const Modulo = ({ props }) => {
           description={"desc"}
         />
 
-        <div className={"grid-h content-justify border-all"}>
+        <div className={"grid-h items-center border-all theme-bg-primary-light"}>
           <div className={"dsp-none dsp-sm-block"}>sm</div>
           <div className={"dsp-none dsp-md-block"}>md</div>
           <div className={"dsp-none dsp-lg-block"}>lg</div>

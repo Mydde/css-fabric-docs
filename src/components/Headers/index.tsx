@@ -17,7 +17,7 @@ interface HeaderProps {
 
 export const HeaderSiteTitle = (props: Props) => {
   return (
-    <div className={"grid-v items-center h-8 pad-all-16 brd-b pos-sticky"}>
+    <div className={"grid-v items-center h-8 pad-all-16 border-b pos-sticky"}>
       <header className={"grid-h just-center items-center"}>
         <h1 className={"pad-all"}>{props.title}</h1>
         <h4 className={"pad-all self-start"}>{props.title_tag}</h4>
@@ -31,7 +31,7 @@ export const Header = (props: HeaderProps) => {
   return (
     <div className={"pad-all pad-b-16"}>
       <div className={"grid-h items-center pad-l-16"}>
-        <h2 className={"pad-all brd-b "}>{props.title}</h2>
+        <h2 className={"pad-all border-b "}>{props.title}</h2>
         <h4 className={"pad-all txt-gray-500  txt-h4"}>
           {props.tag}
         </h4>
@@ -45,9 +45,9 @@ export const SubHeader = (props: Props) => {
   return (
     <article className={"pad-all grid-main"}>
       <div className={"grid-h items-center"}>
-        <div className={"w-4 brd-r txt-center"}></div>
+        <div className={"w-4 border-r txt-center"}></div>
         <div className={""}>
-          <h3 className={"pad-tb-8 pad-l-8 brd-l-4"}>{props.title}</h3>
+          <h3 className={"pad-tb-8 pad-l-8 border-l-4"}>{props.title}</h3>
           <p className={"pad-l-16 txt-gray-900"}>description : {props.description}</p>
         </div>
       </div>
@@ -70,7 +70,7 @@ export const SubSubHeader = (props: Props) => {
   return (
     <div className={"pad-all grid-main"}>
       <div className={"grid-h items-center"}>
-        <div className={"w-4 txt-center brd-4"} > 
+        <div className={"w-4 txt-center border-4"} > 
         </div>
         <div>
           <h4 className={"pad-all"}>{props.tag}</h4>
@@ -78,7 +78,7 @@ export const SubSubHeader = (props: Props) => {
         </div>
       </div>
       <div className={"grid-h"}>
-        <div className={"w-4 txt-center brd-4"}  > 
+        <div className={"w-4 txt-center border-4"}  > 
         </div>
         <article className={"marg-l-8"}>{props.children}</article>
       </div>

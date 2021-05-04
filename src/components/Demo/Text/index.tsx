@@ -53,21 +53,21 @@ const Text = (props: Props) => {
             </div>
           ))}
         </div>
-        <h4 className={"pad-all brd-b dsp-inline"}>H text borders sticked to bottom</h4>
+        <h4 className={"pad-all border-b dsp-inline"}>H text borders sticked to bottom</h4>
         <div className="grid-h grid-wrap pad-all items-end">
           {[...Array(nb)].map((name, val) => (
-            <div className={`grid-main brd-b pad-all-16`}>
+            <div className={`grid-main border-b pad-all-16`}>
               <span className={`h${val + 1}`}>{`.h${val + 1}`}</span>
             </div>
           ))}
         </div>
-        <h4 className={"pad-all brd-b dsp-inline"}>
+        <h4 className={"pad-all border-b dsp-inline"}>
           H text vertically aligned with sized borders
         </h4>
         <div className="grid-h grid-wrap pad-all-16 items-end">
           {[...Array(nb)].map((name, val) => (
             <div className={`grid-main  pad-all`}>
-              <span className={`brd-b h${val + 1}`}>{`.h${
+              <span className={`border-b h${val + 1}`}>{`.h${
                 val + 1
               }`}</span>
             </div>

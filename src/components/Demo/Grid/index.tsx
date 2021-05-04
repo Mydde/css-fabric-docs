@@ -17,9 +17,9 @@ const Grid = (props: Props) => {
                 {grid_sizes.map((name, nidx) => {
                   let grid_size = nidx + 1;
                   return (
-                    <div className={`brd-b bg-100`}>
+                    <div className={`border-b bg-100`}>
                       <div
-                        className={`w-${grid_size}-${value} brd-u h-2 pad-all bg-200`}>
+                        className={`w-${grid_size}-${value} border-u h-2 pad-all bg-200`}>
                         <span className={``}>
                           txt-{`${grid_size}-${value} `}
                         </span>
