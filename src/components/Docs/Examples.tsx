@@ -17,6 +17,7 @@ export default function Examples(props: IExamples) {
     const moduleKeys = fabricAttributes['keys'] || [];
     const moduleLevels = fabricAttributes['levels'] || [];
     const moduleLevelsDeclined = fabricAttributes['levelsDeclin'] || undefined;
+    const moduleClassNames = fabricAttributes['classNames'] || {};
 
     function fromModule(module: string, fabricTag: any) {
         return fromTag(fabricTag)
@@ -94,6 +95,17 @@ export default function Examples(props: IExamples) {
 
                 }
             }
+            // if moduleClassNames
+            if (Object.keys(moduleClassNames).length) {
+                if (utils.isObjectOfTypes(moduleClassNames) === 'objects') {
+                    Object.keys(moduleClassNames).forEach((classNameKey: string) => {
+                        let classNameValues = moduleClassNames[classNameKey];
+                        //
+                        let test = classNameValues.map(x => classNameKey + '-' + x)
+                        console.log({classNameKey,classNameValues, test})
+                    })
+                }
+            }
 
             // console.log({collectOut})
             out = (<div>{Object.values(collectOut).map((x: any) => {
@@ -104,7 +116,7 @@ export default function Examples(props: IExamples) {
         }
 
 
-          console.log(collectOut)
+        console.log(collectOut)
         return out;
     }
 
