@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
         <p className={styles.description}>
            
-          <a  href="demo_component/text">demo_component/text</a> 
+          <a  href="cssfabric-modules/text">cssfabric-modules/text</a>
           <br /> 
           <a  href="vars">vars</a> 
         </p> 
