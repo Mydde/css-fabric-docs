@@ -7,6 +7,7 @@ interface IExamples {
     moduleAttribute: any;
 }
 
+
 export default function Examples(props: IExamples) {
 
     const {module, moduleAttribute} = props;
@@ -18,6 +19,9 @@ export default function Examples(props: IExamples) {
     const moduleLevels = fabricAttributes['levels'] || [];
     const moduleLevelsDeclined = fabricAttributes['levelsDeclin'] || undefined;
     const moduleClassNames = fabricAttributes['classNames'] || {};
+
+
+    let MAIN_COLLECT = [];
 
     function fromModule(module: string, fabricTag: any) {
         return fromTag(fabricTag)
@@ -31,83 +35,184 @@ export default function Examples(props: IExamples) {
         })
     }
 
+    function parseKeys() {
+        // if keys
+        if (moduleKeys.length) {
+
+
+            console.log(' moduleKeys ' + qualify(moduleKeys));
+
+            switch (qualify(moduleKeys)) {
+                case 'arrayOfstrings':
+                case 'arrayOfnumbers':
+                    const classNameList = moduleKeys.map(levelKey => {
+                        if (moduleLevels[levelKey]) {
+                            parseLinkedLevel(levelKey)
+                        }
+                        return moduleTag + '-' + levelKey
+                    })
+
+                    parseLevelWithKeys(classNameList);
+
+                    MAIN_COLLECT = MAIN_COLLECT.concat(classNameList);
+
+                    break;
+                case "arrayOfobjects":
+
+                    break;
+                case "arrayOfarrays":
+                    // flatten ?
+
+                    let out = moduleKeys.flat().map(levelKey => {
+                        if (moduleLevels[levelKey]) {
+                            parseLinkedLevel(levelKey)
+                        }
+                        return moduleTag + '-' + levelKey
+                    })
+
+                    MAIN_COLLECT = MAIN_COLLECT.concat(out);
+
+                    break;
+            }
+
+            // console.log('parseKeys', classNameList)
+        }
+    }
+
+    function parseLevelWithKeys(classNameList) {
+        console.log({classNameList})
+        //return;
+        if(!classNameList) return;
+        if (Array.isArray(moduleLevels)) {
+
+            let out = moduleLevels.map((x) => {
+                return classNameList.map((y) => {
+                    if(y.map) return y.map(z => z + '-' + x)
+                    else console.log(y)
+                })
+            }).flat(2)
+
+            MAIN_COLLECT = MAIN_COLLECT.concat(out);
+        } else {
+            console.log('SHOULD BE parseLevelWithKeys')
+        }
+
+    }
+
+    function parseLinkedLevel(levelKey) {
+
+        // object of arrays
+        if (utils.isObjectOfTypes(moduleLevels) === 'arrays') {
+
+            let level = moduleLevels[levelKey];
+
+            if (moduleKeys.includes(levelKey) || levelKey.charAt(0) === '_') {
+                let laliste = level.map(x => moduleTag + '-' + levelKey + '-' + x);
+
+                MAIN_COLLECT = MAIN_COLLECT.concat(laliste);
+                parseDeclinatedLevel(levelKey, laliste);
+            }
+        } else {
+            console.log('SHOULD BE parseLinkedLevel')
+        }
+    }
+
+    function parseDeclinatedLevel(levelKey, laliste) {
+        if (moduleLevels[levelKey] && moduleLevelsDeclined[levelKey]) {
+
+            const out = laliste.map(x => {
+                return moduleLevelsDeclined[levelKey].map(y => {
+                    return (y === '_') ? x : [x, y].join('-')
+                })
+            }).flat(2)
+
+            MAIN_COLLECT = MAIN_COLLECT.concat(out);
+        }
+    }
+
+
+    function parseLevels(actionType = null) {
+        // parse levels
+        console.log(' moduleLevels ' + qualify(moduleLevels))
+        let out = [];
+
+        switch (qualify(moduleKeys)) {
+            case 'arrayOfstrings':
+            case 'arrayOfnumbers':
+
+                if (['numbers', 'strings'].includes(utils.isArrayOfTypes(moduleLevels))) {
+
+                    let te = moduleKeys.map(x => {
+                        return moduleLevels.map((y => {
+                            return x + '-' + y
+                        }))
+                    })
+
+                    out = out.concat(te)
+                }
+
+
+                if (qualify(moduleLevels) === 'objectOfarrays') {
+
+                }
+
+                break;
+            case "arrayOfobjects":
+
+                break;
+            case "arrayOfarrays":
+
+                break;
+        }
+
+        console.log('parseLevels', out)
+    }
+
+    function parseLevelsWithoutKeys() {
+
+    }
+
+    function parseClassNames() {
+
+        if (Object.keys(moduleClassNames).length) {
+            if (utils.isObjectOfTypes(moduleClassNames) === 'arrays') {
+
+               let test =  Object.keys(moduleClassNames).map((classNameKey: string) => {
+                    let classNameValues = moduleClassNames[classNameKey];
+                    //
+                    return classNameValues.map(x => classNameKey + '-' + x)
+                }).flat(2)
+
+                MAIN_COLLECT = MAIN_COLLECT.concat(test);
+            }
+        }
+    }
+
     function fromTag(fabricTag: string) {
         let out;
         const collectOut = {};
 
-        // if keys
-        if (moduleKeys.length) {
-            // if keys: string[]
-            if (utils.isArrayOfTypes(moduleKeys || []) === 'strings') {
-                out = (<div>{moduleKeys.map(x => {
-                    return <div>{fabricTag + '-' + x}</div>
-                })}</div>)
 
-                // if levels are objects ( of arrays )
-                if (utils.isObjectOfTypes(moduleLevels) === 'arrays') {
+        parseKeys();
+        parseLevelsWithoutKeys();
+        parseClassNames();
 
-                    let moduleLevelsKeys = Object.keys(moduleLevels);
+        return <div>{MAIN_COLLECT.flat().map(x => <div>{x}</div>)}</div>;
 
-                    // loop onto keys
-                    moduleKeys.slice(0, 3).forEach((moduleKey) => {
-                        collectOut[moduleKey] = [];
-                        // if in levels
-                        if (moduleLevels[moduleKey]) {
-                            let fabricLevelValues = moduleLevels[moduleKey]; //.slice(0,1);
-                            // loop to concatenate with levelsKeys
-                            fabricLevelValues.forEach((levelValue) => {
-                                // is there declined levels ?
-                                if (moduleLevelsDeclined && moduleLevelsDeclined[moduleKey]) {
-                                    // console.log({moduleLevelsDeclined, moduleKey, levelValue})
-                                    collectOut[moduleKey] = collectOut[moduleKey].concat(concatenateIt(moduleLevelsDeclined, moduleKey, levelValue));
-                                    // console.log(levelValue, moduleLevelsDeclined[moduleKey])
-                                } else {
-                                    // normal levels, non declined
-                                    collectOut[moduleKey].push([fabricTag, moduleKey, levelValue].join('-'))
-                                }
-                            })
-                        } else {
-                            moduleLevelsKeys.forEach((levelKey: string) => {
-                                collectOut[moduleKey] = collectOut[moduleKey].concat(concatenateIt(moduleLevels, levelKey, moduleKey + '-' + levelKey))
-                            })
-                        }
-                    })
+        // if moduleClassNames
+        if (Object.keys(moduleClassNames).length) {
 
-                    out = (<div>{Object.values(collectOut).map((x: any) => {
-                        return <div>
-                            <div><br/></div>
-                            {x.map(done => <div>{done}</div>)} </div>
-                    })}</div>)
-                }
-            }
-        } else {
-            // si levels
-            if (moduleLevels.length) {
-                if (Array.isArray(moduleLevels)) {
-                    switch (utils.isArrayOfTypes(moduleLevels)) {
-                        case "strings":
-                        case "numbers":
-                            // moduleLevels.map(x=>x);
-                            // console.log(moduleLevels.map(x => fabricTag + '-' + x))
-                            collectOut['red'] = moduleLevels.map(x => fabricTag + '-' + x)
-                            break;
-                    }
-
-                }
-            }
-            // if moduleClassNames
-            if (Object.keys(moduleClassNames).length) {
-                if (utils.isObjectOfTypes(moduleClassNames) === 'objects') {
-                    Object.keys(moduleClassNames).forEach((classNameKey: string) => {
-                        let classNameValues = moduleClassNames[classNameKey];
-                        //
-                        let test = classNameValues.map(x => classNameKey + '-' + x)
-                        console.log({classNameKey,classNameValues, test})
-                    })
-                }
+            if (utils.isObjectOfTypes(moduleClassNames) === 'arrays') {
+                // console.log(utils.isObjectOfTypes(moduleClassNames))
+                Object.keys(moduleClassNames).forEach((classNameKey: string) => {
+                    let classNameValues = moduleClassNames[classNameKey];
+                    //
+                    let test = classNameValues.map(x => classNameKey + '-' + x)
+                    collectOut[classNameKey] = test;
+                    // console.log({classNameKey, classNameValues, test})
+                })
             }
 
-            // console.log({collectOut})
             out = (<div>{Object.values(collectOut).map((x: any) => {
                 return <div>
                     <div><br/></div>
@@ -115,9 +220,21 @@ export default function Examples(props: IExamples) {
             })}</div>)
         }
 
+        // console.log(collectOut);
 
-        console.log(collectOut)
         return out;
+    }
+
+
+    function qualify(vars) {
+
+        if (Array.isArray(vars)) {
+            return 'arrayOf' + utils.isArrayOfTypes(vars);
+        }
+
+        if (typeof vars === 'object') {
+            return 'objectOf' + utils.isObjectOfTypes(vars);
+        }
     }
 
     return <div>
