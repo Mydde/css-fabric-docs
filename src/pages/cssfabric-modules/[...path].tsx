@@ -1,7 +1,9 @@
-import {useRouter} from "next/router";
-import Link        from "next/link";
-import dynamic     from "next/dynamic";
-import Docs        from "@/components/Docs/Docs";
+import {useRouter}    from "next/router";
+import Link           from "next/link";
+import dynamic        from "next/dynamic";
+import Docs           from "@/components/Docs/Docs";
+import DocsClassNames from "@/components/Docs/DocsClassNames";
+import DocsDemo from "@/components/Docs/DocsDemo";
 
 import conf_cssfabric from "cssfabric";
 
@@ -12,7 +14,13 @@ import {
 import React from "react";
 
 
-const ModulePath = () => {
+interface IModulePathProps {
+    cssfabricModuleList: Record<string, any>
+}
+
+const ModulePath = (props) => {
+    
+    console.log('props', {props})
     
     const router                          = useRouter();
     const [activeModule, setActiveModule] = React.useState<string>();
@@ -33,7 +41,7 @@ const ModulePath = () => {
         
         tagProperties = conf_cssfabric.getModuleMetaData(activeModule);
         
-        // moduleTag     = activeModule?.charAt(0)?.toUpperCase() + activeModule?.slice(1) || "Demo";
+        //  moduleTag     = activeModule?.charAt(0)?.toUpperCase() + activeModule?.slice(1) || "Demo";
         //  DynamicComponent = dynamic(import("src/components/Demo/" + moduleTag));
     } else {
         return <div>null</div>
@@ -46,6 +54,8 @@ const ModulePath = () => {
         
         setActiveModule(module);
         setActiveAction(action);
+        
+        console.log({module,action})
     }
     
     return (
@@ -84,14 +94,24 @@ const ModulePath = () => {
                     description={tagProperties.description}
                 />
                 <div className={""}>
-                    {activeAction}
-                    {!activeAction && <Docs module={activeModule}/>}
-                    {(activeAction === 'demo') && <Docs module={activeModule}/>}
-                    {/*<DynamicComponent />*/}
+                    {activeModule && !activeAction && <Docs module={activeModule}/>}
+                    {activeModule && (activeAction === 'docs') && <DocsClassNames module={activeModule}/>}
+                    {activeModule && (activeAction === 'demo') && <DocsDemo module={activeModule}/>}
                 </div>
             </section>
         </div>
     );
 };
+
+/*export async function getStaticProps(context: any) {
+ console.log('context', {context})
+ 
+ 
+ return {
+ props: {
+ cssfabricModuleList: conf_cssfabric.getModuleList()
+ },
+ }
+ }*/
 
 export default ModulePath;

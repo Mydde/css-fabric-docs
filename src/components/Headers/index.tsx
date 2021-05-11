@@ -36,7 +36,7 @@ export const Header = (props: HeaderProps) => {
           {props.tag}
         </h4>
       </div>
-      <p className={"pad-l-16  marg-t-8 marg-b-16"}>{props.description}</p>
+      <p className={"pad-l-8  marg-t-2 text-center marg-b-16"}>{props.description}</p>
     </div>
   );
 };

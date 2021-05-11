@@ -1,10 +1,11 @@
-import Head        from 'next/head';
-import cssfabric   from "cssfabric";
-import utils       from "@/utils/utils";
-import {htmlUtils} from "@/utils/utils";
-import Examples    from '@/components/Docs/Examples'
-import Link        from "next/link";
-import {useRouter} from "next/router";
+import Head                          from 'next/head';
+import cssfabric                     from "cssfabric";
+import utils                         from "@/utils/utils";
+import {htmlUtils, fabricNavigation} from "@/utils/utils";
+import DocsClassNames                from '@/components/Docs/DocsClassNames'
+import Link                          from "next/link";
+import {useRouter}                   from "next/router";
+import Menu                          from "@/components/Menu";
 
 interface IDocs {
     module: any
@@ -17,8 +18,6 @@ export default function Docs(props: IDocs) {
     
     const router          = useRouter();
     const {query, asPath} = router;
-    
-    console.log(query, asPath)
     
     function tre(part: any) {
         
@@ -64,19 +63,31 @@ export default function Docs(props: IDocs) {
             <Head>
                 <title>{module} cssfabric documentation</title>
             </Head>
-            <Link href={asPath + `/demo`  }>
-                link
-            </Link>
+            <div className={"grid-h border-t"}>
+                <Menu module={module} />
+                <div className={"grid-main grid-v grid-items-end pad-r-8"}>
+                    <div className={"txt-800 border-b dsp-inline"}>
+                        cssfabric classnames
+                    </div>
+                    <div className={"txt-gray-300 marg-b-4"}>
+                        engine declarations
+                    </div>
+                </div>
+            
+            </div>
             {Object.keys(moduleAttributes).map((moduleAttribute: string) => {
+    
                 let moduleAttributeModel = moduleAttributes[moduleAttribute]
                 
-                let {tag, keys, levels, levelsDeclin, classNames, values, about} = moduleAttributeModel;
+                let {tag, keys, levels, levelsDeclin, levelsLinked,classNames, values, about} = moduleAttributeModel;
                 let toParse                                                      = {
                     keys,
                     levels,
                     levelsDeclin,
+                    levelsLinked,
                     classNames
                 };
+                let moduleClassNames = cssfabric.getClassNames.getModuleTagClassNames({module, moduleAttribute});
                 
                 return <div className={"grid-h pad-b-8"}>
                     <div className={"grid-main"}>
@@ -105,23 +116,33 @@ export default function Docs(props: IDocs) {
                             })}
                         </div>
                     </div>
-                    <div className={"box-content marg-l-1 w-tiers grid-h"}>
+                    <div className={"box-content marg-l-1 w-mid grid-h"}>
                         <div className={"cell-spacing"}>
-                            <div className={"txt-800 border-b dsp-inline"}>
-                                cssfabric classnames
-                            </div>
                             <div className={"txt-gray-300 marg-b-4"}>
-                                generated examples
+                                generated samples
                             </div>
                             <div className={""}>
-                                <div className={"grid-v border-l pad-l theme-border-primary "}>
-                                    <Examples module={module} moduleAttribute={moduleAttribute}/>
+                                <div  >
+                                    <pre>
+                                    {JSON.stringify(moduleClassNames,null,'\t')}
+                                        </pre>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             })}
         </div>
     )
+}
+
+export async function getServerSideProps(context: any) {
+    console.log({context})
+    //const res = await fetch(`http://localhost:5000/posts/${context.params.id}`)
+    // const data = await res.json()
+    
+    return {
+        props: {},
+    }
 }
