@@ -42,21 +42,22 @@ export const htmlUtils = {
 export default utils;
 
 
-const urlModule    = 'cssfabric-modules';
-const pageDocsName = 'docs';
-const pageDemoName = 'demo';
+const urlModule         = 'cssfabric-modules';
+const pageDocsName      = 'docs';
+const pageDemoName      = 'demo';
+const pageDemoClassName = 'classnames';
 
 export const fabricNavigation = {
     getHomePages:            () => {
-    
+        return `/${urlModule}`;
     },
     getModuleDocsPage:       (module: string) => {
-        return `/${urlModule}/${module}`;
-    },
-    getModuleClassNamesPage: (module: string) => {
         return `/${urlModule}/${module}/${pageDocsName}`;
     },
-    getModuleDemoPage: (module: string) => {
+    getModuleClassNamesPage: (module: string) => {
+        return `/${urlModule}/${module}/${pageDemoClassName}`;
+    },
+    getModuleDemoPage:       (module: string) => {
         return `/${urlModule}/${module}/${pageDemoName}`;
     }
 }

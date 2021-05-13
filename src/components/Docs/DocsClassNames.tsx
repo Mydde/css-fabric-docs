@@ -22,20 +22,20 @@ export default function DocsClassNames(props: IDocsClassNames) {
                 generated classnames
             </div>
         </div>*/}
-        <div className={"pad-8 grid-h grid-wrap"}>
+        <div className={"pad-8"}>
             {
                 Object.keys(moduleAttributes).map((moduleAttribute: string) => {
                     const newOut = cssfabric.getModuleClassNames.getModuleTagClassNames({module, moduleAttribute});
                     
-                    return <div key={moduleAttribute} className={"w-mid scale-w-mid "}>
+                    return <div key={moduleAttribute} className={" "}>
                         <h4 className={"pad-tb-2"}>{moduleAttribute}</h4>
                         <div className={"txt-gray-400 pad-tb-2"}>
                             {`- cssfabric expressions list for  css ${moduleAttribute} rules`}
                         </div>
-                        <p className={"grid-h grid-wrap marg-b-8"}>
-                            {newOut.map((x, y) => <span className={"w-sm-full w-md-mid w-xl-tiers w-quarter"}
-                                                        key={x + y}>.{x}</span>)}
-                        </p>
+                        <div className={"marg-b-8"}>
+                            {newOut.map((x, y) => <div className={""}
+                                                        key={x + y}>.{x}</div>)}
+                        </div>
                     </div>
                 })
             }

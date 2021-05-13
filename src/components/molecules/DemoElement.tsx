@@ -87,8 +87,8 @@ export default function DemoElement(props: IDemoElement) {
 const DemoElementBackgroundColor = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
-    return <div className={cssFabricClassName + ' w-sm-auto h-sm-2  h-8 pad-1'}>
-         {cssFabricClassName}
+    return <div className={cssFabricClassName + ' w-sm-auto w-8 h-sm-2 h-8 pad-1 overflow-auto'}>
+         <div className={"text-ellipsis"}>{cssFabricClassName}</div>
     </div>
 }
 const DemoElementColor = (props: IDemoElementGridProps) => {

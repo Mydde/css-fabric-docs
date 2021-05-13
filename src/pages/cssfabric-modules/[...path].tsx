@@ -14,6 +14,7 @@ import {
 import React from "react";
 import Menu  from "@/components/Menu";
 
+import utils , {fabricNavigation} from "@/utils/utils";
 
 interface IModulePathProps {
     cssfabricModuleList: Record<string, any>
@@ -55,8 +56,6 @@ const ModulePath = (props) => {
         
         setActiveModule(module);
         setActiveAction(action);
-        
-        console.log({module, action})
     }
     
     return (
@@ -67,15 +66,22 @@ const ModulePath = (props) => {
                     title_tag={"just.fabric.it"}
                     description={"Welcome"}
                 />
+                <div className={"grid-h"}>
+                    <div className={"dsp-none dsp-sm-block"}>sm</div>
+                    <div className={"dsp-md-block dsp-none "}>md</div>
+                    <div className={"dsp-lg-block dsp-none"}>lg</div>
+                    <div className={"dsp-none dsp-xl-block dsp-none"}>xl</div>
+                    <div className={"dsp-none dsp-xxl-block dsp-none"}>xxl</div>
+                </div>
             </div>
-            <div className={"grid-h  h-full "}>
-                <aside className={"w-lg-full w-16"}>
+            <div className={"grid-sm-v grid-h  h-full "}>
+                <aside className={"w-lg-16"}>
                     <nav className={"pad-all-8"}>
-                        <ul className={"menu-v menu-lg-h"}>
+                        <ul className={"menu-lg-h menu-v"}>
                             {Object.values(links).map((key: string, index: number) => {
                                 return (
                                     <li key={key} className={"menu-item"}>
-                                        <Link href={`/cssfabric-modules/${key}`}>
+                                        <Link href={fabricNavigation.getModuleDemoPage(key)}>
                                             <a>
                                                 <span>{`${key}`}</span>
                                             </a>
