@@ -15,34 +15,66 @@ export default function DocsDemo(props: IDocsClassNames) {
     
     let out;
     
- 
+    function proxyDsp(val: any, moduleAttribute: any, moduleRule: string = "default") {
+        if (Array.isArray(val)) {
+            return DspArray(val, moduleAttribute, moduleRule)
+        } else {
+            return dspObject(val, moduleAttribute, moduleRule)
+        }
+    }
+    
+    function DspArray(val: any[], moduleAttribute: any, moduleRule: any) {
+        return <div className={"marg-b-2"}>
+            <p className={"marg-b-2 pad-tb"}>cssfabric.{moduleRule} : {moduleAttribute} classnames for cssfabric</p>
+            <div className={"grid-h grid-wrap cell-spacing"}>
+                {val.map((className, y) => {
+                    return <DemoElement moduleAttribute={moduleAttribute} moduleRule={moduleRule}
+                                        cssFabricClassName={className}>
+                        [{moduleAttribute}] .{className}
+                    </DemoElement>
+                })}
+            </div>
+        </div>
+    }
+    
+    function dspObject(val: Record<string, any>, moduleAttribute: any, moduleRule: any) {
+        return <div>
+            {Object.keys(val).map((moduleRule) => {
+                return <div>
+                    <h5 className={"pad-2 pad-r-8 dsp-block-inline border-b"}>- {moduleRule}</h5>
+                    <div className={"marg-l-4"}>
+                        {proxyDsp(val[moduleRule], moduleAttribute, moduleRule)}
+                    </div>
+                </div>
+            })}
+        </div>
+        
+    }
     
     return <div>
-        <div className={"grid-v grid-items-end pad-r-8"}>
+        {/*<div className={"grid-v grid-items-end pad-r-8"}>
             <div className={"txt-800 border-b dsp-inline"}>
                 cssfabric classnames
             </div>
             <div className={"txt-gray-300 marg-b-4"}>
                 generated examples
             </div>
-        </div>
-        <Menu module={module} />
-        <div className={"pad-8 grid-h grid-wrap"}>
+        </div>*/}
+        
+        <div className={"pad-8 grid-v"}>
             {
                 Object.keys(moduleAttributes).map((moduleAttribute: string) => {
-                    const newOut = cssfabric.getClassNames.getModuleTagClassNames({module, moduleAttribute});
                     
-                    return <div key={moduleAttribute} className={"w-mid scale-w-mid "}>
+                    const moduleDebug = cssfabric.getModuleTagDebug({module, moduleAttribute});
+                    
+                    return <div key={moduleAttribute} className={"w-sm-full w-48"}>
                         <h4 className={"pad-tb-2"}>{moduleAttribute}</h4>
+                        {/*<pre>{JSON.stringify(moduleDebug,null,"\t")}</pre>*/}
                         <div className={"txt-gray-400 pad-tb-2"}>
                             {`- cssfabric expressions list for  css ${moduleAttribute} rules`}
                         </div>
-                        <div className={"grid-h grid-wrap marg-b-8"}>
-                            {newOut.map((className, y) => {
-                                return <DemoElement moduleAttribute={moduleAttribute} cssFabricClassName={className} >
-                                    {moduleAttribute} .{className}
-                                </DemoElement>
-                            })}
+                        <div className={"marg-b-8"}>
+                            {proxyDsp(moduleDebug, moduleAttribute)}
                         </div>
                     </div>
                 })
@@ -50,7 +82,3 @@ export default function DocsDemo(props: IDocsClassNames) {
         </div>
     </div>
 }
-
-/*
-<span className={"w-sm-full w-md-mid w-xl-tiers w-quarter "+className}
-      key={className + y}>.{className}</span>*/

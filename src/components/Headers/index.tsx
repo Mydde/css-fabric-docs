@@ -17,7 +17,7 @@ interface HeaderProps {
 
 export const HeaderSiteTitle = (props: Props) => {
   return (
-    <div className={"grid-v items-center h-8 pad-all-16 border-b pos-sticky"}>
+    <div className={"grid-v items-center pad-all-8 border-b pos-sticky"}>
       <header className={"grid-h just-center items-center"}>
         <h1 className={"pad-all"}>{props.title}</h1>
         <h4 className={"pad-all self-start"}>{props.title_tag}</h4>
@@ -29,14 +29,14 @@ export const HeaderSiteTitle = (props: Props) => {
 
 export const Header = (props: HeaderProps) => {
   return (
-    <div className={"pad-all pad-b-16"}>
-      <div className={"grid-h items-center pad-l-16"}>
+    <div className={"pad-t-4"}>
+      <div className={"grid-h items-center pad-l-8 h-4"}>
         <h2 className={"pad-all border-b "}>{props.title}</h2>
         <h4 className={"pad-all txt-gray-500  txt-h4"}>
           {props.tag}
         </h4>
       </div>
-      <p className={"pad-l-8  marg-t-2 text-center marg-b-16"}>{props.description}</p>
+      <p className={"h-2 text-center marg-l-24 marg-b-16 pad-t-4 color-gray-400"}>{props.description}</p>
     </div>
   );
 };

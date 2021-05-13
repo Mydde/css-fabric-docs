@@ -3,7 +3,7 @@ import Link           from "next/link";
 import dynamic        from "next/dynamic";
 import Docs           from "@/components/Docs/Docs";
 import DocsClassNames from "@/components/Docs/DocsClassNames";
-import DocsDemo from "@/components/Docs/DocsDemo";
+import DocsDemo       from "@/components/Docs/DocsDemo";
 
 import conf_cssfabric from "cssfabric";
 
@@ -12,6 +12,7 @@ import {
     HeaderSiteTitle,
 }            from "src/components/Headers";
 import React from "react";
+import Menu  from "@/components/Menu";
 
 
 interface IModulePathProps {
@@ -55,11 +56,11 @@ const ModulePath = (props) => {
         setActiveModule(module);
         setActiveAction(action);
         
-        console.log({module,action})
+        console.log({module, action})
     }
     
     return (
-        <div className={"grid-h grid-wrap h-full content-start overflow-auto"}>
+        <div className={"grid-v   h-full content-start overflow-auto"}>
             <div className={"w-full w-sm-main theme-bg-primary-light pos-sticky "}>
                 <HeaderSiteTitle
                     title="cssfabric"
@@ -67,38 +68,42 @@ const ModulePath = (props) => {
                     description={"Welcome"}
                 />
             </div>
-            <aside className={"w-lg-full w-16"}>
-                <nav className={"pad-all-16"}>
-                    <ul className={"menu-v menu-lg-h"}>
-                        {Object.values(links).map((key: string, index: number) => {
-                            return (
-                                <li key={key} className={"pad-ii-4 pad-tb-4 menu-item hover-parent"}>
-                                    <Link href={`/cssfabric-modules/${key}`}>
-                                        <a>
-                                            <span className={"hover-show"}>set </span>
-                                            <span className={"hover-hide"}>{`${key}`}</span>
-                                            <span className={"hover-show txt-bold"}>{`${key}`}</span>
-                                            <span className={"hover-show"}> with cssfabric</span>
-                                        </a>
-                                    </Link>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </nav>
-            </aside>
-            <section className={"grid-main pad-all-16"}>
-                <Header
-                    title={"." + tagProperties.title}
-                    tag={"fabric.css." + tagProperties.title}
-                    description={tagProperties.description}
-                />
-                <div className={""}>
-                    {activeModule && !activeAction && <Docs module={activeModule}/>}
-                    {activeModule && (activeAction === 'docs') && <DocsClassNames module={activeModule}/>}
-                    {activeModule && (activeAction === 'demo') && <DocsDemo module={activeModule}/>}
-                </div>
-            </section>
+            <div className={"grid-h  h-full "}>
+                <aside className={"w-lg-full w-16"}>
+                    <nav className={"pad-all-8"}>
+                        <ul className={"menu-v menu-lg-h"}>
+                            {Object.values(links).map((key: string, index: number) => {
+                                return (
+                                    <li key={key} className={"menu-item"}>
+                                        <Link href={`/cssfabric-modules/${key}`}>
+                                            <a>
+                                                <span>{`${key}`}</span>
+                                            </a>
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </nav>
+                </aside>
+                <section className={"grid-main pad-all-8"}>
+                    <Header
+                        title={"." + tagProperties.title}
+                        tag={"fabric.css." + tagProperties.title}
+                        description={tagProperties.description}
+                    />
+                    <div className={"grid-h"}>
+                        <div>
+                            <Menu module={activeModule}/>
+                        </div>
+                        <div className={"pad-l-8 grid-main"}>
+                            {activeModule && !activeAction && <Docs module={activeModule}/>}
+                            {activeModule && (activeAction === 'docs') && <DocsClassNames module={activeModule}/>}
+                            {activeModule && (activeAction === 'demo') && <DocsDemo module={activeModule}/>}
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     );
 };

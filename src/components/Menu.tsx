@@ -5,22 +5,30 @@ interface IMenu {
     module: any
 }
 
-const Menu = (props:IMenu) => {
+const Menu = (props: IMenu) => {
     
-    const {module}         = props;
-
+    const {module} = props;
     
-    return <div className={"cell-padding grid-h"}>
-        <Link href={fabricNavigation.getModuleDocsPage(module)}>
-            <a>See Docs Home list for {module}</a>
+    
+    return <ul className={"menu-v menu-small shad-8"}>
+        <li>
+            <Link href={fabricNavigation.getModuleDocsPage(module)}>
+                <a>Docs</a>
+            </Link>
+        </li>
+        <li>
+            <Link href={fabricNavigation.getModuleClassNamesPage(module)}>
+            <a>Classnames</a>
         </Link>
-        <Link href={fabricNavigation.getModuleClassNamesPage(module)}>
-            <a>See classnames list for {module}</a>
-        </Link>
-        <Link href={fabricNavigation.getModuleDemoPage(module)}>
-            <a>See demo list for {module}</a>
-        </Link>
-    </div>
+        </li>
+        <li>
+            <Link href={fabricNavigation.getModuleDemoPage(module)}>
+                <a>Demo</a>
+            </Link>
+        </li>
+    
+    
+    </ul>
 }
 
 export default Menu;
