@@ -41,7 +41,7 @@ export default function DocsDemo(props: IDocsClassNames) {
         return <div>
             {Object.keys(val).map((moduleRule) => {
                 return <div>
-                    <h5 className={"pad-2 pad-r-8 dsp-block-inline border-b"}>- {moduleRule}</h5>
+                    <h5 className={"pad-2 pad-r-8 dsp-block-inline border-b"}>{moduleRule}</h5>
                     <div className={"marg-l-4"}>
                         {proxyDsp(val[moduleRule], moduleAttribute, moduleRule)}
                     </div>
@@ -53,32 +53,39 @@ export default function DocsDemo(props: IDocsClassNames) {
     
     return <div>
         {/*<div className={"grid-v grid-items-end pad-r-8"}>
-            <div className={"txt-800 border-b dsp-inline"}>
-                cssfabric classnames
-            </div>
-            <div className={"txt-gray-300 marg-b-4"}>
-                generated examples
-            </div>
-        </div>*/}
+         <div className={"txt-800 border-b dsp-inline"}>
+         cssfabric classnames
+         </div>
+         <div className={"txt-gray-300 marg-b-4"}>
+         generated examples
+         </div>
+         </div>*/}
         
-        <div className={"pad-8 grid-v"}>
+        <div className={"pad-8"}>
             {
                 Object.keys(moduleAttributes).map((moduleAttribute: string) => {
                     
                     const moduleDebug = cssfabric.getModuleTagDebug({module, moduleAttribute});
                     
-                    return <div key={moduleAttribute} className={"w-sm-full w-48"}>
-                        <h4 className={"pad-tb-2"}>{moduleAttribute}</h4>
+                    return <div key={moduleAttribute} className={"w-sm-full"}>
+                        <h4 className={"border-l-4 pad-l-4"}>module {moduleAttribute}</h4>
                         {/*<pre>{JSON.stringify(moduleDebug,null,"\t")}</pre>*/}
-                        <div className={"txt-gray-400 pad-tb-2"}>
+                        <div className={"marg-l-8 txt-gray-400 pad-tb-2"}>
                             {`- cssfabric expressions list for  css ${moduleAttribute} rules`}
                         </div>
-                        <div className={"marg-b-8"}>
-                            {proxyDsp(moduleDebug, moduleAttribute)}
+                        <div className={"marg-b-8 marg-l-8"}>
+                            {Object.keys(moduleDebug).map((tag) => {
+                                return <div>
+                                    <h5 className={""}>- {tag}</h5>
+                                    <div className={' marg-l-8'}>{proxyDsp(moduleDebug[tag], moduleAttribute)}</div>
+                                </div>
+                            })
+                            }
+                            {/*{proxyDsp(moduleDebug, moduleAttribute)}*/}
                         </div>
                     </div>
                 })
+                }
+                </div>
+                </div>
             }
-        </div>
-    </div>
-}

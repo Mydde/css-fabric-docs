@@ -9,12 +9,12 @@ import conf_cssfabric from "cssfabric";
 
 import {
     Header,
-    HeaderSiteTitle,
-}            from "src/components/Headers";
+    HeaderSiteTitle, SubHeader,
+} from "src/components/Headers";
 import React from "react";
 import Menu  from "@/components/Menu";
 
-import utils , {fabricNavigation} from "@/utils/utils";
+import utils, {fabricNavigation} from "@/utils/utils";
 
 interface IModulePathProps {
     cssfabricModuleList: Record<string, any>
@@ -78,6 +78,7 @@ const ModulePath = (props) => {
                 <aside className={"w-lg-16"}>
                     <nav className={"pad-all-8"}>
                         <ul className={"menu-lg-h menu-v"}>
+                            <li>Css</li>
                             {Object.values(links).map((key: string, index: number) => {
                                 return (
                                     <li key={key} className={"menu-item"}>
@@ -89,6 +90,7 @@ const ModulePath = (props) => {
                                     </li>
                                 );
                             })}
+                            <li>Components</li>
                         </ul>
                     </nav>
                 </aside>
@@ -98,14 +100,22 @@ const ModulePath = (props) => {
                         tag={"fabric.css." + tagProperties.title}
                         description={tagProperties.description}
                     />
-                    <div className={"grid-h"}>
-                        <div>
+                    <div className={"grid-h marg-t-8"}>
+                        <div className={"marg-t-8"}>
+                            
                             <Menu module={activeModule}/>
                         </div>
                         <div className={"pad-l-8 grid-main"}>
-                            {activeModule && !activeAction && <Docs module={activeModule}/>}
-                            {activeModule && (activeAction === 'docs') && <DocsClassNames module={activeModule}/>}
-                            {activeModule && (activeAction === 'demo') && <DocsDemo module={activeModule}/>}
+                            <div>
+                                <SubHeader title={activeModule+'.'+activeAction} />
+                            </div>
+                            <div>
+                                {activeModule && !activeAction && <Docs module={activeModule}/>}
+                                {activeModule && (activeAction === 'docs') && <Docs module={activeModule}/>}
+                                {activeModule && (activeAction === 'classnames') && <DocsClassNames module={activeModule}/>}
+                                {activeModule && (activeAction === 'demo') && <DocsDemo module={activeModule}/>}
+                                
+                            </div>
                         </div>
                     </div>
                 </section>

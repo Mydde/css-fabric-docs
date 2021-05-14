@@ -32,7 +32,7 @@ export default function DemoElement(props: IDemoElement) {
         switch ('mod') {
             default:
                 out = <div className={'w-sm-full w-8-min'}>
-                    <div className={"pad dsp-none"}>.{moduleAttribute} .{moduleRule} .{cssFabricClassName}</div>
+                    <div style={{display:'none'}} className={"pad dsp-none"}>.{moduleAttribute} .{moduleRule} .{cssFabricClassName}</div>
                     {DrawType()}
                 </div>
         }
@@ -45,6 +45,9 @@ export default function DemoElement(props: IDemoElement) {
         switch (moduleAttribute) {
             case "color":
                 content = <DemoElementColor {...props} />
+                break;
+            case "border-color":
+                content = <DemoElementBorderColor {...props} />
                 break;
             case "background-color":
             case "background-themed":
@@ -87,15 +90,22 @@ export default function DemoElement(props: IDemoElement) {
 const DemoElementBackgroundColor = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
-    return <div className={cssFabricClassName + ' w-sm-auto w-8 h-sm-2 h-8 pad-1 overflow-auto'}>
+    return <div className={cssFabricClassName + ' w-sm-auto w-8 h-sm-2 h-8 pad-1 overflow-none'}>
          <div className={"text-ellipsis"}>{cssFabricClassName}</div>
+    </div>
+}
+const DemoElementBorderColor = (props: IDemoElementGridProps) => {
+    const {moduleAttribute, moduleRule, cssFabricClassName} = props;
+    
+    return <div className={'border-4 '+ cssFabricClassName + ' h-full w-16 pad'}>
+       .{cssFabricClassName}
     </div>
 }
 const DemoElementColor = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
     return <div className={cssFabricClassName + ' h-full pad'}>
-       this {moduleAttribute} is so {cssFabricClassName}
+       this is so {cssFabricClassName}
     </div>
 }
 const DemoElementMargin = (props: IDemoElementGridProps) => {
