@@ -20,7 +20,7 @@ interface IModulePathProps {
     cssfabricModuleList: Record<string, any>
 }
 
-const ModulePath = (props) => {
+const ModulePath = (props: IModulePathProps) => {
     
     console.log('props', {props})
     
