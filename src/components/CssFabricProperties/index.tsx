@@ -11,7 +11,7 @@ export const CssFabricProperties = (props: Props) => {
 
   return (
     <div className={"grid-h grid-wrap"}>
-      {Object.keys(property).map((key) => {
+      {Object.keys(property).map((key: string) => {
         const font_weight = property[key];
         const cssProperty = "txt-" + key; 
         return (

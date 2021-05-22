@@ -1,6 +1,6 @@
 import cssfabric   from "cssfabric";
 import React       from "react";
-import DemoElement from "@/components/molecules/DemoElement";
+import DemoElement from "@/components/DemoElements/DemoElement";
 import Menu        from "@/components/Menu";
 
 interface IDocsClassNames {
