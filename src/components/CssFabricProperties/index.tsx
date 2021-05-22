@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  property: string;
+  property: Record<string, any>;
   type?: 'color' | 'bg'
 }
 

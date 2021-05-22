@@ -10,7 +10,7 @@ import conf_cssfabric from "cssfabric";
 import {
     Header,
     HeaderSiteTitle, SubHeader,
-} from "src/components/Headers";
+}            from "src/components/Headers";
 import React from "react";
 import Menu  from "@/components/Menu";
 
@@ -22,31 +22,45 @@ interface IModulePathProps {
 
 const ModulePath = (props: IModulePathProps) => {
     
-    console.log('props', {props})
-    
     const router                          = useRouter();
     const [activeModule, setActiveModule] = React.useState<string>();
     const [activeAction, setActiveAction] = React.useState<string>();
     
+    const {cssfabricModuleList} = props;
+    
     const {path}          = router.query;
-    const links: string[] = Object.keys(conf_cssfabric.getModuleList())
+    const links: string[] = Object.keys(cssfabricModuleList)
     
     let moduleTag;
     let DynamicComponent;
-    let tagProperties;
+    let tagProperties: Record<string, any> = {};
     
-    React.useEffect(() => {
+    let staticModule: string = '';
+    let staticAction: string = '';
+    
+   /* React.useEffect(() => {
         if (path) init(path);
-    }, [path])
+    }, [path])*/
+    
+    if (path) {
+        // console.log({path})
+    
+        staticModule = path[0];
+        staticAction = path[1];
+    
+        tagProperties = conf_cssfabric.getModuleMetaData(staticModule);
+        
+        // init(path);
+    }
     
     if (activeModule) {
         
-        tagProperties = conf_cssfabric.getModuleMetaData(activeModule);
+        // tagProperties = conf_cssfabric.getModuleMetaData(activeModule);
         
         //  moduleTag     = activeModule?.charAt(0)?.toUpperCase() + activeModule?.slice(1) || "Demo";
         //  DynamicComponent = dynamic(import("src/components/Demo/" + moduleTag));
     } else {
-        return <div>null</div>
+        // return <div>aka null</div>
     }
     
     function init(path: string | string[]) {
@@ -54,8 +68,8 @@ const ModulePath = (props: IModulePathProps) => {
         const module = path[0];
         const action = path[1];
         
-        setActiveModule(module);
-        setActiveAction(action);
+        // setActiveModule(module);
+        // setActiveAction(action);
     }
     
     return (
@@ -102,19 +116,19 @@ const ModulePath = (props: IModulePathProps) => {
                     />
                     <div className={"grid-h marg-t-8"}>
                         <div className={"marg-t-8"}>
-                            
-                            <Menu module={activeModule}/>
+                            <Menu module={staticModule}/>
                         </div>
                         <div className={"pad-l-8 grid-main"}>
                             <div>
-                                <SubHeader title={activeModule+'.'+activeAction} />
+                                <SubHeader title={staticModule + '.' + staticAction}/>
                             </div>
                             <div>
-                                {activeModule && !activeAction && <Docs module={activeModule}/>}
-                                {activeModule && (activeAction === 'docs') && <Docs module={activeModule}/>}
-                                {activeModule && (activeAction === 'classnames') && <DocsClassNames module={activeModule}/>}
-                                {activeModule && (activeAction === 'demo') && <DocsDemo module={activeModule}/>}
-                                
+                                {staticModule && !staticAction && <Docs module={staticModule}/>}
+                                {staticModule && (staticAction === 'docs') && <Docs module={staticModule}/>}
+                                {staticModule && (staticAction === 'classnames') &&
+                                 <DocsClassNames module={staticModule}/>}
+                                {staticModule && (staticAction === 'demo') && <DocsDemo module={staticModule}/>}
+                            
                             </div>
                         </div>
                     </div>
@@ -124,15 +138,27 @@ const ModulePath = (props: IModulePathProps) => {
     );
 };
 
-/*export async function getStaticProps(context: any) {
- console.log('context', {context})
- 
- 
- return {
- props: {
- cssfabricModuleList: conf_cssfabric.getModuleList()
- },
- }
- }*/
+
+export async function getStaticPaths() {
+    
+    const links: any      = conf_cssfabric.getModuleList()
+    const outPaths: any[] = [];
+    
+    Object.keys(links).forEach((link) => {
+        outPaths.push({params: {path: [link, 'docs']}});
+        outPaths.push({params: {path: [link, 'demo']}});
+        outPaths.push({params: {path: [link, 'classnames']}});
+    })
+    return {paths: outPaths, fallback: false}
+}
+
+export async function getStaticProps() {
+    
+    return {
+        props: {
+            cssfabricModuleList: conf_cssfabric.getModuleList()
+        },
+    }
+}
 
 export default ModulePath;

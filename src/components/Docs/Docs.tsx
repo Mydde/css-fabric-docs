@@ -44,11 +44,11 @@ export default function Docs(props: IDocs) {
             switch (utils.isArrayOfTypes(part)) {
                 case "strings":
                 case "numbers":
-                    out = <div className={"grid-h grid-wrap"}>{part.map(x => <div
+                    out = <div className={"grid-h grid-wrap"}>{part.map((x: string) => <div
                         className={"marg-r-4"}>{x}</div>)}</div>;
                     break;
                 case "arrays":
-                    out = part.map((x) => x.join('  ')).map((x) => htmlUtils.enclose(x))
+                    out = part.map((x: string[]) => x.join('  ')).map((x: any) => htmlUtils.enclose(x))
                     break;
                 
             }
@@ -68,7 +68,7 @@ export default function Docs(props: IDocs) {
                 let moduleAttributeModel = moduleAttributes[moduleAttribute]
                 
                 let {tag, keys, levels, levelsDeclin, levelsLinked, classNames, values, about} = moduleAttributeModel;
-                let toParse                                                                    = {
+                let toParse:Record<string, any>                                                                    = {
                     keys,
                     levels,
                     levelsDeclin,
@@ -94,7 +94,7 @@ export default function Docs(props: IDocs) {
                         </div>
                     </div>
                     <div className={"cell-spacing grid-main"}>
-                        {Object.keys(toParse).filter(x => toParse?.[x]).map((w: any) => {
+                        {Object.keys(toParse).filter((x:any) => toParse?.[x]).map((w: any) => {
                             return (
                                 <div className={"marg-b-4"}>
                                     <div className={"w-8 pad-l-4 border-l-4 txt-900"}>

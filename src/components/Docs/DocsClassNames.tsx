@@ -33,7 +33,7 @@ export default function DocsClassNames(props: IDocsClassNames) {
                             {`- cssfabric expressions list for  css ${moduleAttribute} rules`}
                         </div>
                         <div className={"marg-b-8"}>
-                            {newOut.map((x, y) => <div className={""}
+                            {newOut.map((x: string, y: number) => <div className={""}
                                                         key={x + y}>.{x}</div>)}
                         </div>
                     </div>

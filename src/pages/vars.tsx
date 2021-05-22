@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 
 import cssfabric from "cssfabric";
 
-export default function Vars({isConnected}) {
+export default function Vars() {
 
     const moduleAttributes = cssfabric.getModuleDocsAttributes('box');
 
@@ -12,7 +12,7 @@ export default function Vars({isConnected}) {
 
     return (
         <div>
-            {Object.keys(moduleAttributes).map((moduleAttribute: string) => {
+            {/*{Object.keys(moduleAttributes).map((moduleAttribute: string) => {
                 let moduleAttributeModel = moduleAttributes[moduleAttribute]
 
                 let {tag, keys, levels, values, about} = moduleAttributeModel;
@@ -23,12 +23,12 @@ export default function Vars({isConnected}) {
                             {moduleAttribute} <label>{tag}</label>
                         </div>
                         <div className={"box-content"}>
-                            <div>keys {keys?.map((x) => ' ' + x)}</div>
-                            <div>levels {levels?.map((x) => ' ' + x)}</div>
+                            <div>keys {keys?.map((x: string) => ' ' + x)}</div>
+                            <div>levels {levels?.map((x: string) => ' ' + x)}</div>
                         </div>
                     </div>
                 </div>
-            })}
+            })}*/}
         </div>
     )
 }

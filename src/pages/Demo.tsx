@@ -18,10 +18,10 @@ const links = {
 	grid: 'grid-98'
 };
 
-export default function Home({ isConnected }) {
+export default function Home() {
 	return (
 		<div className={'grid-h grid-wrap h-full'}>
-			<div className={'w-full w-sm-main h-8'}>
+			{/*<div className={'w-full w-sm-main h-8'}>
 				<HeaderSiteTitle tag={'cssfabric'} description={'desc'} />
 			</div>
 			<div className={'w-16 grid-v'}>
@@ -41,7 +41,7 @@ export default function Home({ isConnected }) {
 				<Text />
 				<Grid />
 				<Table />
-			</div>
+			</div>*/}
 		</div>
 	);
 }
