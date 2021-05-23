@@ -1,7 +1,7 @@
 import cssfabric   from "cssfabric";
 import React       from "react";
 import DemoElement from "@/components/DemoElements/DemoElement";
-import Menu        from "@/components/Menu";
+import InnerMenu   from "@/components/InnerMenu";
 
 interface IDocsClassNames {
     module: string;

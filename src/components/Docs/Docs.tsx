@@ -4,8 +4,8 @@ import utils                         from "@/utils/utils";
 import {htmlUtils, fabricNavigation} from "@/utils/utils";
 import DocsClassNames                from '@/components/Docs/DocsClassNames'
 import Link                          from "next/link";
-import {useRouter}                   from "next/router";
-import Menu                          from "@/components/Menu";
+import {useRouter} from "next/router";
+import InnerMenu   from "@/components/InnerMenu";
 
 interface IDocs {
     module: any

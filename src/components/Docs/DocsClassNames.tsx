@@ -1,5 +1,5 @@
 import cssfabric from "cssfabric";
-import Menu      from "@/components/Menu";
+import InnerMenu from "@/components/InnerMenu";
 
 interface IDocsClassNames {
     module: string;

@@ -4,15 +4,15 @@ import dynamic        from "next/dynamic";
 import Docs           from "@/components/Docs/Docs";
 import DocsClassNames from "@/components/Docs/DocsClassNames";
 import DocsDemo       from "@/components/Docs/DocsDemo";
-import Head from 'next/head'
+import Head           from 'next/head'
 import conf_cssfabric from "cssfabric";
 
 import {
     Header,
     HeaderSiteTitle, SubHeader,
-}            from "src/components/Headers";
-import React from "react";
-import Menu  from "@/components/Menu";
+}                from "src/components/Headers";
+import React     from "react";
+import InnerMenu from "@/components/InnerMenu";
 
 import utils, {fabricNavigation} from "@/utils/utils";
 
@@ -22,14 +22,12 @@ interface IModulePathProps {
 
 const ModulePath = (props: IModulePathProps) => {
     
-    const router                          = useRouter();
-    const [activeModule, setActiveModule] = React.useState<string>();
-    const [activeAction, setActiveAction] = React.useState<string>();
+    const router = useRouter();
     
     const {cssfabricModuleList} = props;
     
     const {path}          = router.query;
-    const links: string[] = Object.keys(cssfabricModuleList)
+    const links: string[] = fabricNavigation.getActiveLinks();
     
     let moduleTag;
     let DynamicComponent;
@@ -40,22 +38,12 @@ const ModulePath = (props: IModulePathProps) => {
     
     
     if (path) {
-    
+        
         staticModule = path[0];
         staticAction = path[1];
-    
+        
         tagProperties = conf_cssfabric.getModuleMetaData(staticModule);
         
-        // init(path);
-    }
-    
-    function init(path: string | string[]) {
-        // console.log(router)
-        const module = path[0];
-        const action = path[1];
-        
-        // setActiveModule(module);
-        // setActiveAction(action);
     }
     
     return (
@@ -63,28 +51,29 @@ const ModulePath = (props: IModulePathProps) => {
             <Head>
                 <title>{staticModule} {staticAction} cssfabric</title>
             </Head>
-            <div className={"w-full w-sm-main theme-bg-primary-light pos-sticky "}>
+            <div className={"w-full w-sm-main theme-bg-primary-light"}>
                 <HeaderSiteTitle
                     title="cssfabric"
                     title_tag={"just.fabric.it"}
-                    description={"Welcome"}
+                    description={"cssFabric is an alpha cssFabric"}
                 />
-                <div className={"grid-h dsp-none"}>
+                <div className={" dsp-none"}>
                     <div className={"dsp-none dsp-sm-block"}>sm</div>
                     <div className={"dsp-md-block dsp-none "}>md</div>
                     <div className={"dsp-lg-block dsp-none"}>lg</div>
                     <div className={"dsp-none dsp-xl-block dsp-none"}>xl</div>
                     <div className={"dsp-none dsp-xxl-block dsp-none"}>xxl</div>
+                    <div className={"dsp-none dsp-xxxl-block dsp-none"}>xxxl</div>
                 </div>
             </div>
-            <div className={"grid-sm-v grid-h  h-full "}>
-                <aside className={"w-lg-16"}>
-                    <nav className={"pad-all-8"}>
+            <div className={"grid-lg-v grid-h  h-full "}>
+                <aside className={"w-lg-full w-16"}>
+                    <nav className={"pad-all-8 pad-lg-2"}>
                         <ul className={"menu-lg-h menu-v"}>
-                            <li>Css</li>
                             {Object.values(links).map((key: string, index: number) => {
+                                const css = (staticModule=== key)? 'active' : '';
                                 return (
-                                    <li key={key} className={"menu-item"}>
+                                    <li key={key} className={"menu-item "+css}>
                                         <Link href={fabricNavigation.getModuleDemoPage(key)}>
                                             <a>
                                                 <span>{`${key}`}</span>
@@ -93,19 +82,18 @@ const ModulePath = (props: IModulePathProps) => {
                                     </li>
                                 );
                             })}
-                            <li>Components</li>
                         </ul>
                     </nav>
                 </aside>
-                <section className={"grid-main pad-all-8"}>
+                <section className={"grid-main pad-all-4 "}>
                     <Header
                         title={"." + tagProperties.title}
                         tag={"fabric.css." + tagProperties.title}
                         description={tagProperties.description}
                     />
-                    <div className={"grid-h marg-t-8"}>
-                        <div className={"marg-t-8"}>
-                            <Menu module={staticModule}/>
+                    <div className={"grid-xl-v grid-h marg-t-4"}>
+                        <div className={"marg-t-4 marg-lg-l-8"}>
+                            <InnerMenu module={staticModule} action={staticAction}/>
                         </div>
                         <div className={"pad-l-8 grid-main"}>
                             <div>
@@ -130,13 +118,16 @@ const ModulePath = (props: IModulePathProps) => {
 
 export async function getStaticPaths() {
     
-    const links: any      = conf_cssfabric.getModuleList()
+    const links: any      = conf_cssfabric.getModuleList()// .filter((link: string) => links[link]?._docs?.attributes)
     const outPaths: any[] = [];
     
+    
     Object.keys(links).forEach((link) => {
+        //
         outPaths.push({params: {path: [link, 'docs']}});
         outPaths.push({params: {path: [link, 'demo']}});
         outPaths.push({params: {path: [link, 'classnames']}});
+        
     })
     return {paths: outPaths, fallback: false}
 }

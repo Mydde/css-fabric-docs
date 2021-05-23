@@ -1,3 +1,6 @@
+import conf_cssfabric from "cssfabric";
+
+
 const utils = {
     
     isArrayOfTypes: (arr: any): any => {
@@ -59,5 +62,10 @@ export const fabricNavigation = {
     },
     getModuleDemoPage:       (module: string) => {
         return `/${urlModule}/${module}/${pageDemoName}`;
+    },
+    getActiveLinks:          (): string[] => {
+        const cssfab     = conf_cssfabric.getModuleList();
+        return Object.keys(cssfab).filter((link: string) => cssfab?.[link]?._docs?.attributes);
     }
 }
+

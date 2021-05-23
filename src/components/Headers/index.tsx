@@ -11,26 +11,26 @@ interface HeaderProps {
 
 export const HeaderSiteTitle = (props: HeaderProps) => {
     return (
-        <div className={"grid-v items-center pad-all-8 border-b pos-sticky"}>
+        <div className={"grid-v items-center pad-lg-4 pad-all-8 border-b pos-sticky"}>
             <header className={"grid-h just-center items-center"}>
-                <h1 className={"pad-all"}><a href={"/"}>{props.title}</a></h1>
-                <h4 className={"pad-all self-start"}>{props.title_tag}</h4>
+                <h1 className={"pad-all txt-shad-info"}><a href={"/"}>{props.title}</a></h1>
+                <h6 className={"pad-all self-start dsp-sm-none"}>{props.title_tag}</h6>
             </header>
-            <p className={"pad-all"}>{props.description}</p>
+            <p className={"pad-all  dsp-sm-none"}>{props.description}</p>
         </div>
     );
 };
 
 export const Header = (props: HeaderProps) => {
     return (
-        <div className={"pad-t-4 grid-h grid-align-middle"}>
-            <div className={"grid-h items-center pad-l-8 h-4"}>
+        <div className={"pad-2 grid-h grid-wrap grid-align-middle"}>
+            <div className={"grid-h items-center pad-l-8 h-4 grid-main"}>
                 <h2 className={"pad-all border-b "}>{props.title}</h2>
-                <h4 className={"pad-all txt-gray-500  txt-h4"}>
+                <h5 className={"pad-all txt-gray-500  txt-h4"}>
                     {props.tag}
-                </h4>
+                </h5>
             </div>
-            <p className={"pad-all text-center marg-l-8 grid-main border-l-4 color-gray-400"}>{props.description}</p>
+            <p className={"pad-all text-center marg-l-16 border-l-4 color-gray-400"}>{props.description}</p>
         </div>
     );
 };
