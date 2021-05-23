@@ -13,7 +13,7 @@ export const HeaderSiteTitle = (props: HeaderProps) => {
     return (
         <div className={"grid-v items-center pad-all-8 border-b pos-sticky"}>
             <header className={"grid-h just-center items-center"}>
-                <h1 className={"pad-all"}>{props.title}</h1>
+                <h1 className={"pad-all"}><a href={"/"}>{props.title}</a></h1>
                 <h4 className={"pad-all self-start"}>{props.title_tag}</h4>
             </header>
             <p className={"pad-all"}>{props.description}</p>

@@ -4,7 +4,7 @@ import dynamic        from "next/dynamic";
 import Docs           from "@/components/Docs/Docs";
 import DocsClassNames from "@/components/Docs/DocsClassNames";
 import DocsDemo       from "@/components/Docs/DocsDemo";
-
+import Head from 'next/head'
 import conf_cssfabric from "cssfabric";
 
 import {
@@ -38,12 +38,8 @@ const ModulePath = (props: IModulePathProps) => {
     let staticModule: string = '';
     let staticAction: string = '';
     
-   /* React.useEffect(() => {
-        if (path) init(path);
-    }, [path])*/
     
     if (path) {
-        // console.log({path})
     
         staticModule = path[0];
         staticAction = path[1];
@@ -51,16 +47,6 @@ const ModulePath = (props: IModulePathProps) => {
         tagProperties = conf_cssfabric.getModuleMetaData(staticModule);
         
         // init(path);
-    }
-    
-    if (activeModule) {
-        
-        // tagProperties = conf_cssfabric.getModuleMetaData(activeModule);
-        
-        //  moduleTag     = activeModule?.charAt(0)?.toUpperCase() + activeModule?.slice(1) || "Demo";
-        //  DynamicComponent = dynamic(import("src/components/Demo/" + moduleTag));
-    } else {
-        // return <div>aka null</div>
     }
     
     function init(path: string | string[]) {
@@ -74,13 +60,16 @@ const ModulePath = (props: IModulePathProps) => {
     
     return (
         <div className={"grid-v   h-full content-start overflow-auto"}>
+            <Head>
+                <title>{staticModule} {staticAction} cssfabric</title>
+            </Head>
             <div className={"w-full w-sm-main theme-bg-primary-light pos-sticky "}>
                 <HeaderSiteTitle
                     title="cssfabric"
                     title_tag={"just.fabric.it"}
                     description={"Welcome"}
                 />
-                <div className={"grid-h"}>
+                <div className={"grid-h dsp-none"}>
                     <div className={"dsp-none dsp-sm-block"}>sm</div>
                     <div className={"dsp-md-block dsp-none "}>md</div>
                     <div className={"dsp-lg-block dsp-none"}>lg</div>
