@@ -72,21 +72,39 @@ export default function DemoElement(props: IDemoElement) {
             case "table":
                 content = <DemoElementTable {...props} />
                 break;
+            case "text":
+            case "text-align":
+            case "text-shadow":
+            case "text-transform":
+            case "font-weight":
+                content = <DemoElementText {...props} />
+                break;
             default:
                 content = <div className={cssFabricClassName + ' h-full'}>
-                    {moduleAttribute}
+                    {moduleAttribute} {cssFabricClassName}
                 </div>
                 
                 break;
         }
         
         return <React.Fragment>
-            {content}
+            {/*{moduleAttribute}*/}      {content}
         </React.Fragment>
     }
     
     return DrawIt(props);
 }
+
+const DemoElementText = (props: IDemoElementGridProps) => {
+    const {moduleAttribute, moduleRule, cssFabricClassName} = props;
+    
+    return <div className={ ' pad-2 overflow-none scale-w-16'}>
+        <h6 className={'border-l-4 pad-l theme-border-primary-dark dsp-inline'}>.{cssFabricClassName}</h6>
+        <p className={cssFabricClassName +" text-ellipsis"}>Here is some {cssFabricClassName} text</p>
+        <p className={cssFabricClassName +" text-ellipsis"}>This {cssFabricClassName} text is from cssfabric a css sass framework</p>
+    </div>
+}
+
 const DemoElementBackgroundColor = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
@@ -94,6 +112,7 @@ const DemoElementBackgroundColor = (props: IDemoElementGridProps) => {
          <div className={"text-ellipsis"}>{cssFabricClassName}</div>
     </div>
 }
+
 const DemoElementBorderColor = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
