@@ -2,6 +2,7 @@ const path                 = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+    basePath: '/cssfabric-docs',
     assetPrefix: "/cssfabric-docs/", // useful for static build paths
     // ready for webpack5 next ver
     future: {
