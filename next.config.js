@@ -7,6 +7,7 @@ module.exports = {
     future: {
         webpack5: true,
     },
+    outDir: 'docs',
     // If you want to configure the Sass compiler
     /* sassOptions: {
      includePaths: ["css-fabric", "node_modules", "src"].map((d) =>
