@@ -3,12 +3,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     basePath: '/cssfabric-docs',
-    assetPrefix: "https://medyll.github.io/cssfabric-docs/", // useful for static build paths
+    assetPrefix: "/cssfabric-docs/", // useful for static build paths
     // ready for webpack5 next ver
     future: {
         webpack5: true,
     },
-    outDir: 'docs',
     // If you want to configure the Sass compiler
     /* sassOptions: {
      includePaths: ["css-fabric", "node_modules", "src"].map((d) =>
