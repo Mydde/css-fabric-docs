@@ -21,7 +21,7 @@ const Grid = (props: Props) => {
                       <div
                         className={`w-${grid_size}-${value} border-u h-2 pad-all bg-200`}>
                         <span className={``}>
-                          txt-{`${grid_size}-${value} `}
+                          text-{`${grid_size}-${value} `}
                         </span>
                       </div>
                     </div>

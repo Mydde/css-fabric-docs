@@ -32,10 +32,10 @@ const Color = (props: Props) => {
                 <div className={"grid-h pad-b w-8"}>
                   <div
                     className={
-                      "border-all pad-all-2 txt-center bg-" + key
+                      "border-all pad-all-2 text-center bg-" + key
                     }></div>
                   <div
-                    className={"grid-main pad-all-4 txt-bold color-" + { key }}>
+                    className={"grid-main pad-all-4 text-bold color-" + { key }}>
                     {key}
                   </div>
                 </div>
@@ -50,7 +50,7 @@ const Color = (props: Props) => {
               return (
                 <div className={"w-8"}>
                   <div
-                    className={"h-2 pad-all-2 txt-center color-" + val * 100}>
+                    className={"h-2 pad-all-2 text-center color-" + val * 100}>
                     color-{val * 100}
                   </div>
                 </div>
@@ -66,7 +66,7 @@ const Color = (props: Props) => {
                 <div className={"grid-main pad-all-2"}>
                   <div
                     className={
-                      "h-4 pad-all-2 txt-center bg-theme-" + val * 100
+                      "h-4 pad-all-2 text-center bg-theme-" + val * 100
                     }>
                     bg-theme-{val}00
                   </div>
@@ -95,7 +95,7 @@ const Color = (props: Props) => {
                   <div className="grid-main pad-all-4"> {key}</div>
                   <div
                     className={
-                      "grid-main pad-all-2 txt-center  h-6 w-6 bg-theme-" + key
+                      "grid-main pad-all-2 text-center  h-6 w-6 bg-theme-" + key
                     }>
                     *-{key}
                   </div> 
@@ -114,7 +114,7 @@ const Color = (props: Props) => {
                 <div className="grid-main pad-all-4"> {key}</div>
                 <div
                   className={
-                    "grid-main border-all pad-all-2 txt-center h-4 w-4 bg-theme-" +
+                    "grid-main border-all pad-all-2 text-center h-4 w-4 bg-theme-" +
                     key
                   }></div>
               </div>

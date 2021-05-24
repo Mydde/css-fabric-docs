@@ -86,7 +86,7 @@ export default function Docs(props: IDocs) {
                     <div
                         className={"grid-h grid-inline border-b  theme-border-primary align-middle cell-spacing marg-b-1"}>
                         <label>{tag}</label>
-                        <div className={"txt-400"}>{moduleAttribute}</div>
+                        <div className={"text-400"}>{moduleAttribute}</div>
                     </div>
                     <div className={"color-gray-500 marg-b-2 pad-l-8 "}>
                         <div className={"dsp-inline pad-all-2"}>
@@ -97,7 +97,7 @@ export default function Docs(props: IDocs) {
                         {Object.keys(toParse).filter((x:any) => toParse?.[x]).map((w: any) => {
                             return (
                                 <div className={"marg-b-4"}>
-                                    <div className={"w-8 pad-l-4 border-l-4 txt-900"}>
+                                    <div className={"w-8 pad-l-4 border-l-4 text-900"}>
                                         {w}:
                                     </div>
                                     <div className={"marg-l-4"}>

@@ -133,7 +133,7 @@ const DemoElementMargin      = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
     return <div className={'w-16 h-2-min'}>
-        <div className={cssFabricClassName + ' border'}>&nbsp;margin&nbsp;</div>
+        <div className={cssFabricClassName + ' border'}>&nbsp;{cssFabricClassName}&nbsp;</div>
     </div>
 }
 const DemoElementPadding     = (props: IDemoElementGridProps) => {

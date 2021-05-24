@@ -29,7 +29,7 @@ export default function DocsClassNames(props: IDocsClassNames) {
                     
                     return <div key={moduleAttribute} className={" "}>
                         <h4 className={"pad-tb-2"}>{moduleAttribute}</h4>
-                        <div className={"txt-gray-400 pad-tb-2"}>
+                        <div className={"text-gray-400 pad-tb-2"}>
                             {`- cssfabric expressions list for  css ${moduleAttribute} rules`}
                         </div>
                         <div className={"marg-b-8"}>

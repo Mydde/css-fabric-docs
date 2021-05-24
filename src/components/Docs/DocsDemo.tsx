@@ -70,7 +70,7 @@ export default function DocsDemo(props: IDocsClassNames) {
                     return <div key={moduleAttribute} className={"w-sm-full"}>
                         <h4 className={"border-l-4 pad-l-4"}>module {moduleAttribute}</h4>
                         {/*<pre>{JSON.stringify(moduleDebug,null,"\t")}</pre>*/}
-                        <div className={"marg-l-8 txt-gray-400 pad-tb-2"}>
+                        <div className={"marg-l-8 text-gray-400 pad-tb-2"}>
                             {`- cssfabric expressions list for  css ${moduleAttribute} rules`}
                         </div>
                         <div className={"marg-b-8 marg-l-8"}>

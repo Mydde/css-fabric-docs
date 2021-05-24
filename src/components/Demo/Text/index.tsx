@@ -21,7 +21,7 @@ const Text = (props: Props) => {
 
   const tagProperties = conf_fabric.getModuleData(fabricModule);
 
-  console.log(tagProperties);
+  
  
   let conf_text_data = conf_fabric.getModuleData(fabricModule); 
   let conf_text_docs = conf_fabric.getModuleDocs(fabricModule); 

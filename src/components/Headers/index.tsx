@@ -13,7 +13,7 @@ export const HeaderSiteTitle = (props: HeaderProps) => {
     return (
         <div className={"grid-v items-center pad-lg-4 pad-all-8 border-b pos-sticky"}>
             <header className={"grid-h just-center items-center"}>
-                <h1 className={"pad-all txt-shad-info"}><a href={"/"}>{props.title}</a></h1>
+                <h1 className={"pad-all text-shad-info"}><a href={"/"}>{props.title}</a></h1>
                 <h6 className={"pad-all self-start dsp-sm-none"}>{props.title_tag}</h6>
             </header>
             <p className={"pad-all  dsp-sm-none"}>{props.description}</p>
@@ -26,7 +26,7 @@ export const Header = (props: HeaderProps) => {
         <div className={"pad-2 grid-h grid-wrap grid-align-middle"}>
             <div className={"grid-h items-center pad-l-8 h-4 grid-main"}>
                 <h2 className={"pad-all border-b "}>{props.title}</h2>
-                <h5 className={"pad-all txt-gray-500  txt-h4"}>
+                <h5 className={"pad-all text-gray-500  text-h4"}>
                     {props.tag}
                 </h5>
             </div>
@@ -59,7 +59,7 @@ export const SubSubHeader = (props: HeaderProps) => {
     return (
         <div className={"pad-all grid-main"}>
             <div className={"grid-h items-center"}>
-                <div className={"w-4 txt-center border-4"}>
+                <div className={"w-4 text-center border-4"}>
                 </div>
                 <div>
                     <h4 className={"pad-all"}>{props.tag}</h4>
@@ -67,7 +67,7 @@ export const SubSubHeader = (props: HeaderProps) => {
                 </div>
             </div>
             <div className={"grid-h"}>
-                <div className={"w-4 txt-center border-4"}>
+                <div className={"w-4 text-center border-4"}>
                 </div>
                 <article className={"marg-l-8"}>{props.children}</article>
             </div>
