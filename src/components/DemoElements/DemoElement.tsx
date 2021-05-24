@@ -141,7 +141,7 @@ const DemoElementPadding     = (props: IDemoElementGridProps) => {
     
     return <div className={'w-16 h-4-min pad-1 grid-h grid-align-middle grid-align-center'}>
         <div className={cssFabricClassName + '    shad-8  '}>
-            <div className={    ' pad-lr-4   bg-themed-gray-100 '}>&nbsp;{cssFabricClassName}&nbsp;</div>
+            <div className={' pad-lr-4   bg-themed-gray-100 '}>&nbsp;{cssFabricClassName}&nbsp;</div>
         </div>
     </div>
 }
@@ -167,12 +167,26 @@ const DemoElementGrid   = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
     const multiply = (factor: number) => {
-        return [...Array(factor)].map((x, i) => <div className={'border marg pad w-4 h-2'}>&nbsp;{++i}&nbsp;</div>)
+        return [...Array(factor)].map((x, i) => <div className={'border marg pad w-4-min '}>&nbsp;{++i}&nbsp;</div>)
     }
     
-    const def = <div className={'w-64 pad-1'}>
-        <div className={'grid-h ' + cssFabricClassName + " h-8"}>
-            {multiply(3)}
+    const def = <div className={' w-48 pad-1 border-l-4 shad-4 marg-4'}>
+        <h6 className={"pad text-bold border-b"}>
+            {cssFabricClassName}
+        </h6>
+        <div className={"grid-h overflow-hidden cell-spacing"}>
+            <div className={"grid-main overflow-hidden"}>
+                <div className={"pad text-right"}>.grid-v</div>
+                <div className={'grid-v ' + cssFabricClassName + " h-8 overflow-hidden"}>
+                    {multiply(12)}
+                </div>
+            </div>
+            <div className={"grid-main overflow-hidden  border-l"}>
+                <div className={"pad"}>.grid-h</div>
+                <div className={'grid-h ' + cssFabricClassName + " h-8 overflow-hidden"}>
+                    {multiply(12)}
+                </div>
+            </div>
         </div>
     </div>
     
