@@ -22,20 +22,20 @@ const Color = (props: Props) => {
   // const a = conf_fabric["css-config"].modules.base._data.grid_class_name;
   const a = "";
   return (
-    <div className={"grid-h grid-wrap"}>
-      <div className={"grid-main"}>
+    <div className={"flex-h flex-wrap"}>
+      <div className={"flex-main"}>
         <SubHeader title="text colors" description="naafa">
-          <div className={"grid-h"}>
+          <div className={"flex-h"}>
             {Object.keys(base.color_schemes_props).map((key, index) => {
               let prop = base.color_schemes_props[key];
               return (
-                <div className={"grid-h pad-b w-8"}>
+                <div className={"flex-h pad-b w-8"}>
                   <div
                     className={
                       "border-all pad-all-2 text-center bg-" + key
                     }></div>
                   <div
-                    className={"grid-main pad-all-4 text-bold color-" + { key }}>
+                    className={"flex-main pad-all-4 text-bold color-" + { key }}>
                     {key}
                   </div>
                 </div>
@@ -44,7 +44,7 @@ const Color = (props: Props) => {
           </div>
         </SubHeader>
         <SubHeader title="grays" description="naafa">
-          <div className={"grid-h grid-wrap"}>
+          <div className={"flex-h flex-wrap"}>
             {[...Array(base.color_grays.gray_steps)].map((key, val) => {
               val++;
               return (
@@ -59,11 +59,11 @@ const Color = (props: Props) => {
           </div>
         </SubHeader>
         <SubHeader title="background themed grays" description="naafa">
-          <div className={"grid-h"}>
+          <div className={"flex-h"}>
             {[...Array(base.color_grays.gray_steps)].map((key, val) => {
               val++;
               return (
-                <div className={"grid-main pad-all-2"}>
+                <div className={"flex-main pad-all-2"}>
                   <div
                     className={
                       "h-4 pad-all-2 text-center bg-theme-" + val * 100
@@ -87,15 +87,15 @@ const Color = (props: Props) => {
 
         </SubHeader>
         <SubHeader title="palette colors" description="naafa">
-          <div className={"grid-h grid-wrap w-full"}>
+          <div className={"flex-h flex-wrap w-full"}>
             {Object.keys(baseColor.color_palette_props).map((key, index) => {
               let prop = baseColor.color_palette_props[key];
               return (
-                <div className={"grid-h pad-b grid-main border-all  "}>
-                  <div className="grid-main pad-all-4"> {key}</div>
+                <div className={"flex-h pad-b flex-main border-all  "}>
+                  <div className="flex-main pad-all-4"> {key}</div>
                   <div
                     className={
-                      "grid-main pad-all-2 text-center  h-6 w-6 bg-theme-" + key
+                      "flex-main pad-all-2 text-center  h-6 w-6 bg-theme-" + key
                     }>
                     *-{key}
                   </div> 
@@ -110,11 +110,11 @@ const Color = (props: Props) => {
           {Object.keys(baseColor.color_schemes_props).map((key, index) => {
             let prop = baseColor.color_schemes_props[key];
             return (
-              <div className={"grid-h pad-b"}>
-                <div className="grid-main pad-all-4"> {key}</div>
+              <div className={"flex-h pad-b"}>
+                <div className="flex-main pad-all-4"> {key}</div>
                 <div
                   className={
-                    "grid-main border-all pad-all-2 text-center h-4 w-4 bg-theme-" +
+                    "flex-main border-all pad-all-2 text-center h-4 w-4 bg-theme-" +
                     key
                   }></div>
               </div>

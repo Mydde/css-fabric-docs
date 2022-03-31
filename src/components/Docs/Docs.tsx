@@ -36,7 +36,7 @@ export default function Docs(props: IDocs) {
                 
                 return (<div className={"pad"}>
                     <div className={"color-gray-600 dsp-inline marg-r-1 border-b pad"}>{levelKey}</div>
-                    <div className={"grid-h grid-wrap marg-l-4 pad "}>{levelValues}</div>
+                    <div className={"flex-h flex-wrap marg-l-4 pad "}>{levelValues}</div>
                 </div>);
             })
         } else {
@@ -44,7 +44,7 @@ export default function Docs(props: IDocs) {
             switch (utils.isArrayOfTypes(part)) {
                 case "strings":
                 case "numbers":
-                    out = <div className={"grid-h grid-wrap"}>{part.map((x: string) => <div
+                    out = <div className={"flex-h flex-wrap"}>{part.map((x: string) => <div
                         className={"marg-r-4"}>{x}</div>)}</div>;
                     break;
                 case "arrays":
@@ -84,7 +84,7 @@ export default function Docs(props: IDocs) {
                 return <div className={"pad-b-8"}>
                     
                     <div
-                        className={"grid-h grid-inline border-b  theme-border-primary align-middle cell-spacing marg-b-1"}>
+                        className={"flex-h flex-inline border-b  theme-border-primary align-middle cell-spacing marg-b-1"}>
                         <label>{tag}</label>
                         <div className={"text-400"}>{moduleAttribute}</div>
                     </div>
@@ -93,7 +93,7 @@ export default function Docs(props: IDocs) {
                             {about}
                         </div>
                     </div>
-                    <div className={"cell-spacing grid-main"}>
+                    <div className={"cell-spacing flex-main"}>
                         {Object.keys(toParse).filter((x:any) => toParse?.[x]).map((w: any) => {
                             return (
                                 <div className={"marg-b-4"}>

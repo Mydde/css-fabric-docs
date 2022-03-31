@@ -22,7 +22,7 @@ const Scale = (props: Props) => {
   return (
     <div>
       <label>il était temps de faire un label</label>
-      <div className={"grid-h grid-wrap"}>
+      <div className={"flex-h flex-wrap"}>
         {[...scale_defined_steps].map((value, key) => {
           return (
             <div className={"pad-all w-" + value} key={value}>
@@ -31,7 +31,7 @@ const Scale = (props: Props) => {
           );
         })}
       </div>
-      <div className={"grid-h grid-wrap"}>
+      <div className={"flex-h flex-wrap"}>
         {[...scale_defined_steps].map((value, key) => {
           return (
             <div className={"pad-all w-4 bg-100  h-" + value} key={value}>

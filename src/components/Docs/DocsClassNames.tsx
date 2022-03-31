@@ -14,7 +14,7 @@ export default function DocsClassNames(props: IDocsClassNames) {
     
     
     return <div>
-        {/*<div className={"grid-v grid-items-end pad-r-8"}>
+        {/*<div className={"flex-v flex-items-end pad-r-8"}>
             <div className={"txt-800 border-b dsp-inline"}>
                 cssfabric classnames
             </div>

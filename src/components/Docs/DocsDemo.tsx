@@ -26,7 +26,7 @@ export default function DocsDemo(props: IDocsClassNames) {
     function DspArray(val: any[], moduleAttribute: any, moduleRule: any) {
         return <div className={"marg-b-2"}>
             <p className={"marg-b-2 pad-tb"}>cssfabric.{moduleRule} : {moduleAttribute} classnames for cssfabric</p>
-            <div className={"grid-h grid-wrap cell-spacing"}>
+            <div className={"flex-h flex-wrap cell-spacing"}>
                 {val.map((className, y) => {
                     return <DemoElement moduleAttribute={moduleAttribute} moduleRule={moduleRule}
                                         cssFabricClassName={className}>
@@ -52,7 +52,7 @@ export default function DocsDemo(props: IDocsClassNames) {
     }
     
     return <div>
-        {/*<div className={"grid-v grid-items-end pad-r-8"}>
+        {/*<div className={"flex-v flex-items-end pad-r-8"}>
          <div className={"txt-800 border-b dsp-inline"}>
          cssfabric classnames
          </div>

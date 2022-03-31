@@ -43,20 +43,20 @@ const Text = (props: Props) => {
         title={"text title H"}
         title_tag={".-h"}
         description={"Title sizes declaration"}>
-        <div className="grid-h grid-wrap pad-all items-stretch">
+        <div className="flex-h flex-wrap pad-all items-stretch">
           {[...Array(nb)].map((name, val) => (
-            <div className={`grid-main grid-v`}>
+            <div className={`flex-main flex-v`}>
               <div>{`h${val + 1}, .h${val + 1}`}</div>
-              <div className={`h${val + 1} grid-main grid-h items-center`}>
+              <div className={`h${val + 1} flex-main flex-h items-center`}>
                 <div className={"self-end"}>title</div>
               </div>
             </div>
           ))}
         </div>
         <h4 className={"pad-all border-b dsp-inline"}>H text borders sticked to bottom</h4>
-        <div className="grid-h grid-wrap pad-all items-end">
+        <div className="flex-h flex-wrap pad-all items-end">
           {[...Array(nb)].map((name, val) => (
-            <div className={`grid-main border-b pad-all-16`}>
+            <div className={`flex-main border-b pad-all-16`}>
               <span className={`h${val + 1}`}>{`.h${val + 1}`}</span>
             </div>
           ))}
@@ -64,9 +64,9 @@ const Text = (props: Props) => {
         <h4 className={"pad-all border-b dsp-inline"}>
           H text vertically aligned with sized borders
         </h4>
-        <div className="grid-h grid-wrap pad-all-16 items-end">
+        <div className="flex-h flex-wrap pad-all-16 items-end">
           {[...Array(nb)].map((name, val) => (
-            <div className={`grid-main  pad-all`}>
+            <div className={`flex-main  pad-all`}>
               <span className={`border-b h${val + 1}`}>{`.h${
                 val + 1
               }`}</span>

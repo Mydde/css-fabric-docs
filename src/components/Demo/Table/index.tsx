@@ -17,12 +17,12 @@ const Table = (props: Props) => {
   ];
 
   return (
-    <div className={"grid-h grid-wrap relative"}>
+    <div className={"flex-h flex-wrap relative"}>
       {tblNames.map((nameClass) => (
         <div className={"h-32 w-md-full w-lg-mid w-mid  pad-all-16"}>
-          <div className={"h-full grid-v overflow-j relative"}>
+          <div className={"h-full flex-v overflow-j relative"}>
             <h4 className={"border-b-1 pad-all-16"}>- table : {nameClass}</h4>
-            <div className={"grid-main border-all-1 overflow-auto"}>
+            <div className={"flex-main border-all-1 overflow-auto"}>
               <table className={"table tbl-layout  w-full " + nameClass}>
                 <thead>
                   <tr>

@@ -139,7 +139,7 @@ const DemoElementMargin      = (props: IDemoElementGridProps) => {
 const DemoElementPadding     = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
-    return <div className={'w-16 h-4-min pad-1 grid-h grid-align-middle grid-align-center'}>
+    return <div className={'w-16 h-4-min pad-1 flex-h flex-align-middle flex-align-center'}>
         <div className={cssFabricClassName + '    shad-8  '}>
             <div className={' pad-lr-4   bg-themed-gray-100 '}>&nbsp;{cssFabricClassName}&nbsp;</div>
         </div>
@@ -149,7 +149,7 @@ const DemoElementPadding     = (props: IDemoElementGridProps) => {
 const DemoElementBorder = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
-    return <div className={'w-16 h-4 pad-1 grid-h grid-align-middle grid-align-center'}>
+    return <div className={'w-16 h-4 pad-1 flex-h flex-align-middle flex-align-center'}>
         <div className={cssFabricClassName + ''}>&nbsp;border&nbsp;</div>
     </div>
 }
@@ -174,32 +174,32 @@ const DemoElementGrid   = (props: IDemoElementGridProps) => {
         <h6 className={"pad text-bold border-b"}>
             {cssFabricClassName}
         </h6>
-        <div className={"grid-h overflow-hidden cell-spacing"}>
-            <div className={"grid-main overflow-hidden"}>
-                <div className={"pad text-right"}>.grid-v</div>
-                <div className={'grid-v ' + cssFabricClassName + " h-8 overflow-hidden"}>
+        <div className={"flex-h overflow-hidden cell-spacing"}>
+            <div className={"flex-main overflow-hidden"}>
+                <div className={"pad text-right"}>.flex-v</div>
+                <div className={'flex-v ' + cssFabricClassName + " h-8 overflow-hidden"}>
                     {multiply(12)}
                 </div>
             </div>
-            <div className={"grid-main overflow-hidden  border-l"}>
-                <div className={"pad"}>.grid-h</div>
-                <div className={'grid-h ' + cssFabricClassName + " h-8 overflow-hidden"}>
+            <div className={"flex-main overflow-hidden  border-l"}>
+                <div className={"pad"}>.flex-h</div>
+                <div className={'flex-h ' + cssFabricClassName + " h-8 overflow-hidden"}>
                     {multiply(12)}
                 </div>
             </div>
         </div>
     </div>
     
-    const forClassNames = <div className={'grid-h w-64 pad-1 h-16-min'}>
-        <div className={"w-mid border-r grid-v"}>
-            <div className={"pad"}>.grid-h</div>
-            <div className={'grid-main grid-h ' + cssFabricClassName + " h-8"}>
+    const forClassNames = <div className={'flex-h w-64 pad-1 h-16-min'}>
+        <div className={"w-mid border-r flex-v"}>
+            <div className={"pad"}>.flex-h</div>
+            <div className={'flex-main flex-h ' + cssFabricClassName + " h-8"}>
                 {multiply(6)}
             </div>
         </div>
-        <div className={"grid-v"}>
-            <div className={"pad"}>.grid-v</div>
-            <div className={'grid-main grid-v ' + cssFabricClassName + " h-8"}>
+        <div className={"flex-v"}>
+            <div className={"pad"}>.flex-v</div>
+            <div className={'flex-main flex-v ' + cssFabricClassName + " h-8"}>
                 {multiply(3)}
             </div>
         </div>
@@ -217,11 +217,11 @@ const DemoElementTable  = (props: IDemoElementGridProps) => {
     const {moduleAttribute, moduleRule, cssFabricClassName} = props;
     
     return (
-        <div className={"grid-h grid-wrap relative"}>
+        <div className={"flex-h flex-wrap relative"}>
             <div className={"h-16 w-64"}>
-                <div className={"h-full grid-v overflow-j relative"}>
+                <div className={"h-full flex-v overflow-j relative"}>
                     <h5 className={"border-b-1 pad-tb-4"}>table : {cssFabricClassName}</h5>
-                    <div className={"grid-main  overflow-auto marg-t-4"}>
+                    <div className={"flex-main  overflow-auto marg-t-4"}>
                         <table className={"table tbl-layout  w-full tbl-" + cssFabricClassName}>
                             <thead>
                             <tr>

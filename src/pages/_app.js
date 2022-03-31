@@ -1,7 +1,7 @@
 // npm link cssfabric
 import 'styles/globals.css';
-import 'cssfabric/lib/styles/cssfabric.min.css'
-import 'cssfabric/lib/styles/cssfabric.responsive.min.css'
+import '@medyll/cssfabric/lib/styles/cssfabric.min.css'
+import '@medyll/cssfabric/lib/styles/cssfabric.responsive.min.css'
 
 
 function MyApp({ Component, pageProps }) {

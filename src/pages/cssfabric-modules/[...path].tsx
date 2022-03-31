@@ -47,7 +47,7 @@ const ModulePath = (props: IModulePathProps) => {
     }
     
     return (
-        <div className={"grid-v   h-full content-start overflow-auto"}>
+        <div className={"flex-v   h-full content-start overflow-auto"}>
             <Head>
                 <title>{staticModule} {staticAction} cssfabric</title>
             </Head>
@@ -66,7 +66,7 @@ const ModulePath = (props: IModulePathProps) => {
                     <div className={"dsp-none dsp-xxxl-block dsp-none"}>xxxl</div>
                 </div>
             </div>
-            <div className={"grid-lg-v grid-h  h-full "}>
+            <div className={"flex-lg-v flex-h  h-full "}>
                 <aside className={"w-lg-full w-16"}>
                     <nav className={"pad-all-8 pad-lg-2"}>
                         <ul className={"menu-lg-h menu-v"}>
@@ -85,17 +85,17 @@ const ModulePath = (props: IModulePathProps) => {
                         </ul>
                     </nav>
                 </aside>
-                <section className={"grid-main pad-all-4 "}>
+                <section className={"flex-main pad-all-4 "}>
                     <Header
                         title={"." + tagProperties.title}
                         tag={"fabric.css." + tagProperties.title}
                         description={tagProperties.description}
                     />
-                    <div className={"grid-xl-v grid-h marg-t-4"}>
+                    <div className={"flex-xl-v flex-h marg-t-4"}>
                         <div className={"marg-t-4 marg-lg-l-8"}>
                             <InnerMenu module={staticModule} action={staticAction}/>
                         </div>
-                        <div className={"pad-l-8 grid-main"}>
+                        <div className={"pad-l-8 flex-main"}>
                             <div>
                                 <SubHeader title={staticModule + '.' + staticAction}/>
                             </div>
