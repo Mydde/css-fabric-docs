@@ -1,4 +1,4 @@
-import conf_cssfabric from "cssfabric";
+import conf_cssfabric from "@medyll/cssfabric";
 
 
 const utils = {

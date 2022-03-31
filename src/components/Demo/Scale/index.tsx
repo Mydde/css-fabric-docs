@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-import conf_cssfabric from "cssfabric";
+import conf_cssfabric from "@medyll/cssfabric";
 
 interface Props {}
 

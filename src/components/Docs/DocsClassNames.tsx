@@ -1,4 +1,4 @@
-import cssfabric from "cssfabric";
+import cssfabric from "@medyll/cssfabric";
 import InnerMenu from "@/components/InnerMenu";
 
 interface IDocsClassNames {

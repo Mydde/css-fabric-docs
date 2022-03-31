@@ -5,7 +5,7 @@ import Docs           from "@/components/Docs/Docs";
 import DocsClassNames from "@/components/Docs/DocsClassNames";
 import DocsDemo       from "@/components/Docs/DocsDemo";
 import Head           from 'next/head'
-import conf_cssfabric from "cssfabric";
+import conf_cssfabric from "@medyll/cssfabric";
 
 import {
     Header,

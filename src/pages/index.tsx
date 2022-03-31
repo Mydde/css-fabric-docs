@@ -1,5 +1,5 @@
 import Head                from 'next/head'
-import conf_cssfabric      from "cssfabric";
+import conf_cssfabric      from "@medyll/cssfabric";
 import Link                from "next/link";
 import {fabricNavigation}  from "@/utils/utils";
 import React               from "react";

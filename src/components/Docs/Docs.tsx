@@ -1,5 +1,5 @@
 import Head                          from 'next/head';
-import cssfabric                     from "cssfabric";
+import cssfabric                     from "@medyll/cssfabric";
 import utils                         from "@/utils/utils";
 import {htmlUtils, fabricNavigation} from "@/utils/utils";
 import DocsClassNames                from '@/components/Docs/DocsClassNames'

@@ -1,4 +1,4 @@
-import cssfabric               from "cssfabric";
+import cssfabric               from "@medyll/cssfabric";
 import React                   from "react";
 import {JSXElementConstructor} from "react";
 

@@ -9,7 +9,7 @@ import {
   
 import { CssFabricProperties } from "src/components/CssFabricProperties";
   
-import conf_fabric from "cssfabric";
+import conf_fabric from "@medyll/cssfabric";
 
 interface Props {}
 

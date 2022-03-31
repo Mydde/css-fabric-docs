@@ -7,7 +7,7 @@ import {
   SubHeaderH,
 } from "src/components/Headers";
 
-import conf_fabric from "cssfabric";
+import conf_fabric from "@medyll/cssfabric";
 
 interface Props {}
 

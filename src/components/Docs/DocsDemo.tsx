@@ -1,4 +1,4 @@
-import cssfabric   from "cssfabric";
+import cssfabric   from "@medyll/cssfabric";
 import React       from "react";
 import DemoElement from "@/components/DemoElements/DemoElement";
 import InnerMenu   from "@/components/InnerMenu";
