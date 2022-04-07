@@ -11,7 +11,7 @@ export default function Home() {
     const links: string[] = fabricNavigation.getActiveLinks();
     
     return (
-        <div className={"flex-v  flex-align-center h-full theme-bg-primary  overflow-auto  "}>
+        <div className={"flex-v  flex-align-center h-full theme-color-background  overflow-auto  "}>
             <Head>
                 <title>cssfabric home</title>
                 <link rel="icon" href="/favicon.ico"/>
